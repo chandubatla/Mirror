@@ -1,0 +1,538 @@
+2025-11-04 12:09:46,212 - INFO - 🔐 Connecting to Angel One API...
+2025-11-04 12:09:47,353 - INFO - ✅ Angel One API Connected Successfully!
+2025-11-04 12:09:47,354 - ERROR - ❌ Token search error: 'SmartConnect' object has no attribute 'searchscrip'
+2025-11-04 12:09:47,357 - INFO - ======================================================================
+2025-11-04 12:09:47,358 - INFO - 🚀 PAPER TRADING BOT INITIALIZED (LIVE DATA)
+2025-11-04 12:09:47,358 - INFO - 📊 Strategy: EMA(9/21/200) + VWAP + ATR
+2025-11-04 12:09:47,359 - INFO - ⏱️ Timeframe: 5-minute candles
+2025-11-04 12:09:47,359 - INFO - 🛡️ Risk: Max 3 trades/day, 3 losses
+2025-11-04 12:09:47,360 - INFO - 💰 Transaction costs: ₹216 per trade (simulated)
+2025-11-04 12:09:47,360 - INFO - 🎯 Symbol: NIFTY FUT
+2025-11-04 12:09:47,648 - INFO - 📈 Market Status: OPEN
+2025-11-04 12:09:47,648 - INFO - ======================================================================
+2025-11-04 12:09:47,649 - WARNING - ⚠️ Not authenticated - using simulated data
+2025-11-04 12:09:47,650 - WARNING - ⚠️ Using simulated data (market closed or connection issue)
+2025-11-04 12:09:47,674 - INFO - 💹 Close: ₹24592.92
+2025-11-04 12:09:47,674 - INFO - 📈 EMAs: Fast=24627.81 | Slow=24618.77 | Trend=24364.21
+2025-11-04 12:09:47,675 - INFO - 📊 ATR: 74.98 | VWAP: 24328.38
+2025-11-04 12:09:47,677 - INFO - 🤖 Starting paper trading bot...
+2025-11-04 12:09:47,678 - INFO - ⏱️ Running for 100 iterations (~500 minutes)
+2025-11-04 12:09:47,678 - INFO - Press Ctrl+C to stop
+
+2025-11-04 12:09:47,679 - WARNING - ⚠️ Not authenticated - using simulated data
+2025-11-04 12:09:47,686 - INFO - 🔄 SIM: Close: ₹24637.01
+2025-11-04 12:14:47,689 - WARNING - ⚠️ Not authenticated - using simulated data
+2025-11-04 12:14:47,698 - INFO - 🔄 SIM: Close: ₹24635.22
+2025-11-04 12:19:47,699 - WARNING - ⚠️ Not authenticated - using simulated data
+2025-11-04 12:19:47,704 - INFO - 🔄 SIM: Close: ₹24659.67
+2025-11-04 12:21:41,033 - INFO - 
+🛑 Stopped by user
+2025-11-04 12:21:41,034 - INFO - 
+⏱️ Session duration: 0.2 hours
+2025-11-04 12:21:41,034 - INFO - ======================================================================
+2025-11-04 12:21:41,035 - INFO - 📈 PAPER TRADING PERFORMANCE REPORT
+2025-11-04 12:21:41,035 - INFO - ======================================================================
+2025-11-04 12:21:41,035 - INFO - ⏱️ Total Iterations: 3
+2025-11-04 12:21:41,036 - INFO - 📊 Total Trades: 0 | Completed: 0
+2025-11-04 12:21:41,036 - INFO - ℹ️ No completed trades yet
+2025-11-04 12:21:41,036 - INFO - ======================================================================
+2025-11-04 12:21:41,531 - INFO - ✅ Logged out from Angel One
+2025-11-04 12:25:04,780 - INFO - 🔐 Connecting to Angel One API...
+2025-11-04 12:25:05,958 - INFO - ✅ Angel One API Connected Successfully!
+2025-11-04 12:25:05,959 - ERROR - ❌ Token search error: 'SmartConnect' object has no attribute 'searchscrip'
+2025-11-04 12:25:05,960 - INFO - ======================================================================
+2025-11-04 12:25:05,960 - INFO - 🚀 PAPER TRADING BOT INITIALIZED (LIVE DATA)
+2025-11-04 12:25:05,961 - INFO - 📊 Strategy: EMA(9/21/200) + VWAP + ATR
+2025-11-04 12:25:05,961 - INFO - ⏱️ Timeframe: 5-minute candles
+2025-11-04 12:25:05,961 - INFO - 🛡️ Risk: Max 3 trades/day, 3 losses
+2025-11-04 12:25:05,961 - INFO - 💰 Transaction costs: ₹216 per trade (simulated)
+2025-11-04 12:25:05,961 - INFO - 🎯 Symbol: NIFTY FUT
+2025-11-04 12:25:06,108 - INFO - 📈 Market Status: OPEN
+2025-11-04 12:25:06,109 - INFO - ======================================================================
+2025-11-04 12:25:06,109 - WARNING - ⚠️ Not authenticated - using simulated data
+2025-11-04 12:25:06,109 - WARNING - ⚠️ Using simulated data (market closed or connection issue)
+2025-11-04 12:25:06,118 - INFO - 💹 Close: ₹26580.21
+2025-11-04 12:25:06,119 - INFO - 📈 EMAs: Fast=26456.42 | Slow=26415.28 | Trend=26054.55
+2025-11-04 12:25:06,119 - INFO - 📊 ATR: 76.11 | VWAP: 25720.43
+2025-11-04 12:25:06,119 - INFO - 🤖 Starting paper trading bot...
+2025-11-04 12:25:06,119 - INFO - ⏱️ Running for 100 iterations (~500 minutes)
+2025-11-04 12:25:06,120 - INFO - Press Ctrl+C to stop
+
+2025-11-04 12:25:06,120 - WARNING - ⚠️ Not authenticated - using simulated data
+2025-11-04 12:25:06,123 - INFO - 🔄 SIM: Close: ₹26617.81
+2025-11-04 12:25:24,597 - INFO - 
+🛑 Stopped by user
+2025-11-04 12:25:24,598 - INFO - 
+⏱️ Session duration: 0.0 hours
+2025-11-04 12:25:24,599 - INFO - ======================================================================
+2025-11-04 12:25:24,600 - INFO - 📈 PAPER TRADING PERFORMANCE REPORT
+2025-11-04 12:25:24,600 - INFO - ======================================================================
+2025-11-04 12:25:24,600 - INFO - ⏱️ Total Iterations: 1
+2025-11-04 12:25:24,601 - INFO - 📊 Total Trades: 0 | Completed: 0
+2025-11-04 12:25:24,601 - INFO - ℹ️ No completed trades yet
+2025-11-04 12:25:24,602 - INFO - ======================================================================
+2025-11-04 12:25:25,205 - INFO - ✅ Logged out from Angel One
+2025-11-04 14:26:27,386 - INFO - 🔐 Connecting to Angel One API...
+2025-11-04 14:26:27,387 - ERROR - ❌ Connection Error: Non-base32 digit found
+2025-11-04 14:26:27,387 - ERROR - Tip: Verify API_KEY, CLIENT_ID, MPIN, and TOTP_TOKEN
+2025-11-04 14:26:27,391 - INFO - ======================================================================
+2025-11-04 14:26:27,391 - INFO - 🚀 PAPER TRADING BOT INITIALIZED (SIMULATION)
+2025-11-04 14:26:27,392 - INFO - 📊 Strategy: EMA(9/21/200) + VWAP + ATR
+2025-11-04 14:26:27,392 - INFO - ⏱️ Timeframe: 5-minute candles
+2025-11-04 14:26:27,392 - INFO - 🛡️ Risk: Max 3 trades/day, 3 losses
+2025-11-04 14:26:27,392 - INFO - 💰 Transaction costs: ₹216 per trade (simulated)
+2025-11-04 14:26:27,392 - INFO - 🎯 Symbol: NIFTY FUT
+2025-11-04 14:26:27,542 - INFO - 📈 Market Status: OPEN
+2025-11-04 14:26:27,543 - INFO - ======================================================================
+2025-11-04 14:26:27,543 - WARNING - ⚠️ Not authenticated - using simulated data
+2025-11-04 14:26:27,543 - WARNING - ⚠️ Using simulated data (market closed or connection issue)
+2025-11-04 14:26:27,568 - INFO - 💹 Close: ₹22900.10
+2025-11-04 14:26:27,568 - INFO - 📈 EMAs: Fast=22927.01 | Slow=23027.92 | Trend=23500.34
+2025-11-04 14:26:27,568 - INFO - 📊 ATR: 56.45 | VWAP: 23826.25
+2025-11-04 14:26:27,568 - INFO - 🤖 Starting paper trading bot...
+2025-11-04 14:26:27,569 - INFO - ⏱️ Running for 100 iterations (~500 minutes)
+2025-11-04 14:26:27,569 - INFO - Press Ctrl+C to stop
+
+2025-11-04 14:26:27,569 - WARNING - ⚠️ Not authenticated - using simulated data
+2025-11-04 14:26:27,576 - INFO - 🔄 SIM: Close: ₹22883.49
+2025-11-04 14:27:10,615 - INFO - 
+🛑 Stopped by user
+2025-11-04 14:27:10,616 - INFO - 
+⏱️ Session duration: 0.0 hours
+2025-11-04 14:27:10,616 - INFO - ======================================================================
+2025-11-04 14:27:10,617 - INFO - 📈 PAPER TRADING PERFORMANCE REPORT
+2025-11-04 14:27:10,618 - INFO - ======================================================================
+2025-11-04 14:27:10,618 - INFO - ⏱️ Total Iterations: 1
+2025-11-04 14:27:10,619 - INFO - 📊 Total Trades: 0 | Completed: 0
+2025-11-04 14:27:10,619 - INFO - ℹ️ No completed trades yet
+2025-11-04 14:27:10,620 - INFO - ======================================================================
+2025-11-04 14:27:15,883 - INFO - 🔐 Connecting to Angel One API...
+2025-11-04 14:27:16,873 - INFO - ✅ Angel One API Connected Successfully!
+2025-11-04 14:27:16,873 - INFO -    Trying searchScrip...
+2025-11-04 14:27:17,797 - WARNING - ⚠️ No match for '25NOV' + 'FUT'
+2025-11-04 14:27:17,798 - INFO - Available NIFTY futures:
+2025-11-04 14:27:17,800 - INFO - ======================================================================
+2025-11-04 14:27:17,807 - INFO - 🚀 PAPER TRADING BOT INITIALIZED (LIVE DATA)
+2025-11-04 14:27:17,808 - INFO - 📊 Strategy: EMA(9/21/200) + VWAP + ATR
+2025-11-04 14:27:17,809 - INFO - ⏱️ Timeframe: 5-minute candles
+2025-11-04 14:27:17,810 - INFO - 🛡️ Risk: Max 3 trades/day, 3 losses
+2025-11-04 14:27:17,810 - INFO - 💰 Transaction costs: ₹216 per trade (simulated)
+2025-11-04 14:27:17,810 - INFO - 🎯 Symbol: NIFTY FUT
+2025-11-04 14:27:17,909 - INFO - 📈 Market Status: OPEN
+2025-11-04 14:27:17,909 - INFO - ======================================================================
+2025-11-04 14:27:17,909 - WARNING - ⚠️ Not authenticated - using simulated data
+2025-11-04 14:27:17,910 - WARNING - ⚠️ Using simulated data (market closed or connection issue)
+2025-11-04 14:27:17,917 - INFO - 💹 Close: ₹23043.50
+2025-11-04 14:27:17,917 - INFO - 📈 EMAs: Fast=23075.87 | Slow=23157.19 | Trend=23614.10
+2025-11-04 14:27:17,918 - INFO - 📊 ATR: 58.60 | VWAP: 23868.08
+2025-11-04 14:27:17,918 - INFO - 🤖 Starting paper trading bot...
+2025-11-04 14:27:17,918 - INFO - ⏱️ Running for 100 iterations (~500 minutes)
+2025-11-04 14:27:17,919 - INFO - Press Ctrl+C to stop
+
+2025-11-04 14:27:17,920 - WARNING - ⚠️ Not authenticated - using simulated data
+2025-11-04 14:27:17,923 - INFO - 🔄 SIM: Close: ₹23085.21
+2025-11-04 14:32:17,925 - WARNING - ⚠️ Not authenticated - using simulated data
+2025-11-04 14:32:17,931 - INFO - 🔄 SIM: Close: ₹23123.08
+2025-11-04 14:34:52,269 - INFO - 
+🛑 Stopped by user
+2025-11-04 14:34:52,269 - INFO - 
+⏱️ Session duration: 0.1 hours
+2025-11-04 14:34:52,270 - INFO - ======================================================================
+2025-11-04 14:34:52,270 - INFO - 📈 PAPER TRADING PERFORMANCE REPORT
+2025-11-04 14:34:52,271 - INFO - ======================================================================
+2025-11-04 14:34:52,271 - INFO - ⏱️ Total Iterations: 2
+2025-11-04 14:34:52,271 - INFO - 📊 Total Trades: 0 | Completed: 0
+2025-11-04 14:34:52,272 - INFO - ℹ️ No completed trades yet
+2025-11-04 14:34:52,272 - INFO - ======================================================================
+2025-11-04 14:34:52,907 - INFO - ✅ Logged out from Angel One
+2025-11-04 14:45:46,809 - INFO - 🔐 Connecting to Angel One API...
+2025-11-04 14:45:46,809 - ERROR - ❌ Connection Error: Non-base32 digit found
+2025-11-04 14:45:46,810 - ERROR - Tip: Verify API_KEY, CLIENT_ID, MPIN, and TOTP_TOKEN
+2025-11-04 14:45:46,814 - INFO - ======================================================================
+2025-11-04 14:45:46,814 - INFO - 🚀 PAPER TRADING BOT INITIALIZED (SIMULATION)
+2025-11-04 14:45:46,814 - INFO - 📊 Strategy: EMA(9/21/200) + VWAP + ATR
+2025-11-04 14:45:46,814 - INFO - ⏱️ Timeframe: 5-minute candles
+2025-11-04 14:45:46,814 - INFO - 🛡️ Risk: Max 3 trades/day, 3 losses
+2025-11-04 14:45:46,814 - INFO - 💰 Transaction costs: ₹216 per trade (simulated)
+2025-11-04 14:45:46,814 - INFO - 🎯 Symbol: NIFTY FUT
+2025-11-04 14:45:46,984 - INFO - 📈 Market Status: OPEN
+2025-11-04 14:45:46,984 - INFO - ======================================================================
+2025-11-04 14:45:46,984 - WARNING - ⚠️ Not authenticated - using simulated data
+2025-11-04 14:45:46,984 - WARNING - ⚠️ Using simulated data (market closed or connection issue)
+2025-11-04 14:45:47,009 - INFO - 💹 Close: ₹24876.43
+2025-11-04 14:45:47,010 - INFO - 📈 EMAs: Fast=24950.66 | Slow=24990.39 | Trend=24996.50
+2025-11-04 14:45:47,010 - INFO - 📊 ATR: 75.58 | VWAP: 24841.85
+2025-11-04 14:45:47,010 - INFO - 🤖 Starting paper trading bot...
+2025-11-04 14:45:47,010 - INFO - ⏱️ Running for 100 iterations (~500 minutes)
+2025-11-04 14:45:47,010 - INFO - Press Ctrl+C to stop
+
+2025-11-04 14:45:47,010 - WARNING - ⚠️ Not authenticated - using simulated data
+2025-11-04 14:45:47,014 - INFO - 🔄 SIM: Close: ₹24890.33
+2025-11-04 14:46:05,292 - INFO - 
+🛑 Stopped by user
+2025-11-04 14:46:05,292 - INFO - 
+⏱️ Session duration: 0.0 hours
+2025-11-04 14:46:05,292 - INFO - ======================================================================
+2025-11-04 14:46:05,293 - INFO - 📈 PAPER TRADING PERFORMANCE REPORT
+2025-11-04 14:46:05,293 - INFO - ======================================================================
+2025-11-04 14:46:05,293 - INFO - ⏱️ Total Iterations: 1
+2025-11-04 14:46:05,294 - INFO - 📊 Total Trades: 0 | Completed: 0
+2025-11-04 14:46:05,294 - INFO - ℹ️ No completed trades yet
+2025-11-04 14:46:05,294 - INFO - ======================================================================
+2025-11-04 14:46:14,575 - INFO - 🔐 Connecting to Angel One API...
+2025-11-04 14:46:15,554 - INFO - ✅ Angel One API Connected Successfully!
+2025-11-04 14:46:15,555 - INFO -    Trying searchScrip...
+2025-11-04 14:46:16,465 - WARNING - ⚠️ No match for 'NOV' + 'FUT'
+2025-11-04 14:46:16,465 - INFO - Available NIFTY futures:
+2025-11-04 14:46:16,467 - INFO - ======================================================================
+2025-11-04 14:46:16,468 - INFO - 🚀 PAPER TRADING BOT INITIALIZED (LIVE DATA)
+2025-11-04 14:46:16,468 - INFO - 📊 Strategy: EMA(9/21/200) + VWAP + ATR
+2025-11-04 14:46:16,469 - INFO - ⏱️ Timeframe: 5-minute candles
+2025-11-04 14:46:16,476 - INFO - 🛡️ Risk: Max 3 trades/day, 3 losses
+2025-11-04 14:46:16,477 - INFO - 💰 Transaction costs: ₹216 per trade (simulated)
+2025-11-04 14:46:16,478 - INFO - 🎯 Symbol: NIFTY FUT
+2025-11-04 14:46:16,584 - INFO - 📈 Market Status: OPEN
+2025-11-04 14:46:16,585 - INFO - ======================================================================
+2025-11-04 14:46:16,585 - WARNING - ⚠️ Not authenticated - using simulated data
+2025-11-04 14:46:16,587 - WARNING - ⚠️ Using simulated data (market closed or connection issue)
+2025-11-04 14:46:16,595 - INFO - 💹 Close: ₹23837.87
+2025-11-04 14:46:16,595 - INFO - 📈 EMAs: Fast=23889.44 | Slow=23873.96 | Trend=24087.34
+2025-11-04 14:46:16,596 - INFO - 📊 ATR: 69.66 | VWAP: 24264.91
+2025-11-04 14:46:16,596 - INFO - 🤖 Starting paper trading bot...
+2025-11-04 14:46:16,596 - INFO - ⏱️ Running for 100 iterations (~500 minutes)
+2025-11-04 14:46:16,597 - INFO - Press Ctrl+C to stop
+
+2025-11-04 14:46:16,597 - WARNING - ⚠️ Not authenticated - using simulated data
+2025-11-04 14:46:16,602 - INFO - 🔄 SIM: Close: ₹23830.91
+2025-11-04 14:48:17,393 - INFO - 
+🛑 Stopped by user
+2025-11-04 14:48:17,393 - INFO - 
+⏱️ Session duration: 0.0 hours
+2025-11-04 14:48:17,394 - INFO - ======================================================================
+2025-11-04 14:48:17,394 - INFO - 📈 PAPER TRADING PERFORMANCE REPORT
+2025-11-04 14:48:17,395 - INFO - ======================================================================
+2025-11-04 14:48:17,395 - INFO - ⏱️ Total Iterations: 1
+2025-11-04 14:48:17,396 - INFO - 📊 Total Trades: 0 | Completed: 0
+2025-11-04 14:48:17,396 - INFO - ℹ️ No completed trades yet
+2025-11-04 14:48:17,396 - INFO - ======================================================================
+2025-11-04 14:48:17,850 - INFO - ✅ Logged out from Angel One
+2025-11-04 14:48:22,809 - INFO - 🔐 Connecting to Angel One API...
+2025-11-04 14:48:22,810 - ERROR - ❌ Connection Error: Non-base32 digit found
+2025-11-04 14:48:22,810 - ERROR - Tip: Verify API_KEY, CLIENT_ID, MPIN, and TOTP_TOKEN
+2025-11-04 14:48:22,811 - INFO - ======================================================================
+2025-11-04 14:48:22,811 - INFO - 🚀 PAPER TRADING BOT INITIALIZED (SIMULATION)
+2025-11-04 14:48:22,812 - INFO - 📊 Strategy: EMA(9/21/200) + VWAP + ATR
+2025-11-04 14:48:22,812 - INFO - ⏱️ Timeframe: 5-minute candles
+2025-11-04 14:48:22,812 - INFO - 🛡️ Risk: Max 3 trades/day, 3 losses
+2025-11-04 14:48:22,812 - INFO - 💰 Transaction costs: ₹216 per trade (simulated)
+2025-11-04 14:48:22,812 - INFO - 🎯 Symbol: NIFTY FUT
+2025-11-04 14:48:22,924 - INFO - 📈 Market Status: OPEN
+2025-11-04 14:48:22,924 - INFO - ======================================================================
+2025-11-04 14:48:22,924 - WARNING - ⚠️ Not authenticated - using simulated data
+2025-11-04 14:48:22,925 - WARNING - ⚠️ Using simulated data (market closed or connection issue)
+2025-11-04 14:48:22,931 - INFO - 💹 Close: ₹23961.83
+2025-11-04 14:48:22,931 - INFO - 📈 EMAs: Fast=23810.62 | Slow=23753.74 | Trend=23640.38
+2025-11-04 14:48:22,932 - INFO - 📊 ATR: 69.61 | VWAP: 23676.42
+2025-11-04 14:48:22,932 - INFO - 🤖 Starting paper trading bot...
+2025-11-04 14:48:22,932 - INFO - ⏱️ Running for 100 iterations (~500 minutes)
+2025-11-04 14:48:22,932 - INFO - Press Ctrl+C to stop
+
+2025-11-04 14:48:22,932 - WARNING - ⚠️ Not authenticated - using simulated data
+2025-11-04 14:48:22,935 - INFO - 🔄 SIM: Close: ₹23960.31
+2025-11-04 14:48:39,611 - INFO - 
+🛑 Stopped by user
+2025-11-04 14:48:39,612 - INFO - 
+⏱️ Session duration: 0.0 hours
+2025-11-04 14:48:39,612 - INFO - ======================================================================
+2025-11-04 14:48:39,612 - INFO - 📈 PAPER TRADING PERFORMANCE REPORT
+2025-11-04 14:48:39,613 - INFO - ======================================================================
+2025-11-04 14:48:39,613 - INFO - ⏱️ Total Iterations: 1
+2025-11-04 14:48:39,613 - INFO - 📊 Total Trades: 0 | Completed: 0
+2025-11-04 14:48:39,614 - INFO - ℹ️ No completed trades yet
+2025-11-04 14:48:39,614 - INFO - ======================================================================
+2025-11-04 14:48:44,092 - INFO - 🔐 Connecting to Angel One API...
+2025-11-04 14:48:45,013 - INFO - ✅ Angel One API Connected Successfully!
+2025-11-04 14:48:45,013 - INFO - 🎯 Using Manual Token: NIFTY27NOV25FUT | 5960
+2025-11-04 14:48:45,017 - INFO - ======================================================================
+2025-11-04 14:48:45,017 - INFO - 🚀 PAPER TRADING BOT INITIALIZED (LIVE DATA)
+2025-11-04 14:48:45,017 - INFO - 📊 Strategy: EMA(9/21/200) + VWAP + ATR
+2025-11-04 14:48:45,018 - INFO - ⏱️ Timeframe: 5-minute candles
+2025-11-04 14:48:45,018 - INFO - 🛡️ Risk: Max 3 trades/day, 3 losses
+2025-11-04 14:48:45,018 - INFO - 💰 Transaction costs: ₹216 per trade (simulated)
+2025-11-04 14:48:45,018 - INFO - 🎯 Symbol: NIFTY27NOV25FUT
+2025-11-04 14:48:45,129 - INFO - 📈 Market Status: OPEN
+2025-11-04 14:48:45,129 - INFO - ======================================================================
+2025-11-04 14:48:45,588 - WARNING - ⚠️ No data: Something Went Wrong, Please Try After Sometime
+2025-11-04 14:48:45,589 - WARNING - ⚠️ Using simulated data (market closed or connection issue)
+2025-11-04 14:48:45,596 - INFO - 💹 Close: ₹23970.81
+2025-11-04 14:48:45,597 - INFO - 📈 EMAs: Fast=23937.19 | Slow=23913.68 | Trend=24262.55
+2025-11-04 14:48:45,597 - INFO - 📊 ATR: 66.50 | VWAP: 24388.02
+2025-11-04 14:48:45,597 - INFO - 🤖 Starting paper trading bot...
+2025-11-04 14:48:45,597 - INFO - ⏱️ Running for 100 iterations (~500 minutes)
+2025-11-04 14:48:45,597 - INFO - Press Ctrl+C to stop
+
+2025-11-04 14:48:46,063 - WARNING - ⚠️ No data: Something Went Wrong, Please Try After Sometime
+2025-11-04 14:48:46,069 - INFO - 🔄 SIM: Close: ₹23944.26
+2025-11-04 14:51:08,167 - INFO - 
+🛑 Stopped by user
+2025-11-04 14:51:08,167 - INFO - 
+⏱️ Session duration: 0.0 hours
+2025-11-04 14:51:08,168 - INFO - ======================================================================
+2025-11-04 14:51:08,169 - INFO - 📈 PAPER TRADING PERFORMANCE REPORT
+2025-11-04 14:51:08,170 - INFO - ======================================================================
+2025-11-04 14:51:08,171 - INFO - ⏱️ Total Iterations: 1
+2025-11-04 14:51:08,171 - INFO - 📊 Total Trades: 0 | Completed: 0
+2025-11-04 14:51:08,171 - INFO - ℹ️ No completed trades yet
+2025-11-04 14:51:08,172 - INFO - ======================================================================
+2025-11-04 14:51:08,694 - INFO - ✅ Logged out from Angel One
+2025-11-04 14:51:16,457 - INFO - 🔐 Connecting to Angel One API...
+2025-11-04 14:51:17,515 - INFO - ✅ Angel One API Connected Successfully!
+2025-11-04 14:51:17,516 - INFO - 🎯 Using Manual Token: NIFTY061125FUT | 11069
+2025-11-04 14:51:17,517 - INFO - ======================================================================
+2025-11-04 14:51:17,517 - INFO - 🚀 PAPER TRADING BOT INITIALIZED (LIVE DATA)
+2025-11-04 14:51:17,518 - INFO - 📊 Strategy: EMA(9/21/200) + VWAP + ATR
+2025-11-04 14:51:17,518 - INFO - ⏱️ Timeframe: 5-minute candles
+2025-11-04 14:51:17,518 - INFO - 🛡️ Risk: Max 3 trades/day, 3 losses
+2025-11-04 14:51:17,518 - INFO - 💰 Transaction costs: ₹216 per trade (simulated)
+2025-11-04 14:51:17,518 - INFO - 🎯 Symbol: NIFTY061125FUT
+2025-11-04 14:51:17,652 - INFO - 📈 Market Status: OPEN
+2025-11-04 14:51:17,653 - INFO - ======================================================================
+2025-11-04 14:51:18,106 - WARNING - ⚠️ No data: SUCCESS
+2025-11-04 14:51:18,106 - WARNING - ⚠️ Using simulated data (market closed or connection issue)
+2025-11-04 14:51:18,113 - INFO - 💹 Close: ₹23589.22
+2025-11-04 14:51:18,114 - INFO - 📈 EMAs: Fast=23544.49 | Slow=23493.61 | Trend=23726.29
+2025-11-04 14:51:18,114 - INFO - 📊 ATR: 78.60 | VWAP: 24065.09
+2025-11-04 14:51:18,114 - INFO - 🤖 Starting paper trading bot...
+2025-11-04 14:51:18,115 - INFO - ⏱️ Running for 100 iterations (~500 minutes)
+2025-11-04 14:51:18,115 - INFO - Press Ctrl+C to stop
+
+2025-11-04 14:51:18,634 - WARNING - ⚠️ No data: SUCCESS
+2025-11-04 14:51:18,639 - INFO - 🔄 SIM: Close: ₹23605.55
+2025-11-04 14:52:38,762 - INFO - 
+🛑 Stopped by user
+2025-11-04 14:52:38,763 - INFO - 
+⏱️ Session duration: 0.0 hours
+2025-11-04 14:52:38,764 - INFO - ======================================================================
+2025-11-04 14:52:38,765 - INFO - 📈 PAPER TRADING PERFORMANCE REPORT
+2025-11-04 14:52:38,766 - INFO - ======================================================================
+2025-11-04 14:52:38,767 - INFO - ⏱️ Total Iterations: 1
+2025-11-04 14:52:38,767 - INFO - 📊 Total Trades: 0 | Completed: 0
+2025-11-04 14:52:38,768 - INFO - ℹ️ No completed trades yet
+2025-11-04 14:52:38,768 - INFO - ======================================================================
+2025-11-04 14:52:39,268 - INFO - ✅ Logged out from Angel One
+2025-11-04 14:55:53,603 - INFO - 🔐 Connecting to Angel One API...
+2025-11-04 14:55:54,582 - INFO - ✅ Angel One API Connected Successfully!
+2025-11-04 14:55:54,582 - INFO - 🎯 Using Manual Token: NIFTY061125FUT | 11069
+2025-11-04 14:55:54,584 - INFO - ======================================================================
+2025-11-04 14:55:54,584 - INFO - 🚀 PAPER TRADING BOT INITIALIZED (LIVE DATA)
+2025-11-04 14:55:54,584 - INFO - 📊 Strategy: EMA(9/21/200) + VWAP + ATR
+2025-11-04 14:55:54,584 - INFO - ⏱️ Timeframe: 5-minute candles
+2025-11-04 14:55:54,585 - INFO - 🛡️ Risk: Max 3 trades/day, 3 losses
+2025-11-04 14:55:54,585 - INFO - 💰 Transaction costs: ₹216 per trade (simulated)
+2025-11-04 14:55:54,585 - INFO - 🎯 Symbol: NIFTY061125FUT
+2025-11-04 14:55:54,687 - INFO - 📈 Market Status: OPEN
+2025-11-04 14:55:54,687 - INFO - ======================================================================
+2025-11-04 14:57:15,770 - INFO - 🔐 Connecting to Angel One API...
+2025-11-04 14:57:16,978 - INFO - ✅ Angel One API Connected Successfully!
+2025-11-04 14:57:16,979 - INFO - 🎯 Using Manual Token: NIFTY061125FUT | 11069
+2025-11-04 14:57:16,981 - INFO - ======================================================================
+2025-11-04 14:57:16,981 - INFO - 🚀 PAPER TRADING BOT INITIALIZED (LIVE DATA)
+2025-11-04 14:57:16,982 - INFO - 📊 Strategy: EMA(9/21/200) + VWAP + ATR
+2025-11-04 14:57:16,982 - INFO - ⏱️ Timeframe: 5-minute candles
+2025-11-04 14:57:16,982 - INFO - 🛡️ Risk: Max 3 trades/day, 3 losses
+2025-11-04 14:57:16,982 - INFO - 💰 Transaction costs: ₹216 per trade (simulated)
+2025-11-04 14:57:16,983 - INFO - 🎯 Symbol: NIFTY061125FUT
+2025-11-04 14:57:17,172 - INFO - 📈 Market Status: OPEN
+2025-11-04 14:57:17,172 - INFO - ======================================================================
+2025-11-04 14:59:22,668 - INFO - 🔐 Connecting to Angel One API...
+2025-11-04 14:59:23,615 - INFO - ✅ Angel One API Connected Successfully!
+2025-11-04 14:59:23,615 - INFO - 🎯 Using Manual Token: NIFTY061125FUT | 11069
+2025-11-04 14:59:23,618 - INFO - ======================================================================
+2025-11-04 14:59:23,618 - INFO - 🚀 PAPER TRADING BOT INITIALIZED (LIVE DATA)
+2025-11-04 14:59:23,618 - INFO - 📊 Strategy: EMA(9/21/200) + VWAP + ATR
+2025-11-04 14:59:23,618 - INFO - ⏱️ Timeframe: 5-minute candles
+2025-11-04 14:59:23,619 - INFO - 🛡️ Risk: Max 3 trades/day, 3 losses
+2025-11-04 14:59:23,619 - INFO - 💰 Transaction costs: ₹216 per trade (simulated)
+2025-11-04 14:59:23,619 - INFO - 🎯 Symbol: NIFTY061125FUT
+2025-11-04 14:59:23,729 - INFO - 📈 Market Status: OPEN
+2025-11-04 14:59:23,729 - INFO - ======================================================================
+2025-11-04 15:04:01,289 - INFO - Connecting to Angel One API...
+2025-11-04 15:04:01,729 - ERROR - Authentication Failed: Invalid clientcode parameter name
+2025-11-04 15:04:01,729 - ERROR - Check your credentials!
+2025-11-04 15:04:01,732 - INFO - ======================================================================
+2025-11-04 15:04:01,732 - INFO - 🚀 PAPER TRADING BOT INITIALIZED (SIMULATION)
+2025-11-04 15:04:01,732 - INFO - 📊 Strategy: EMA(9/21/200) + VWAP + ATR
+2025-11-04 15:04:01,733 - INFO - ⏱️ Timeframe: 5-minute candles
+2025-11-04 15:04:01,733 - INFO - 🛡️ Risk: Max 3 trades/day, 3 losses
+2025-11-04 15:04:01,733 - INFO - 💰 Transaction costs: ₹216 per trade (simulated)
+2025-11-04 15:04:01,733 - INFO - 🎯 Symbol: NIFTY FUT
+2025-11-04 15:04:01,846 - INFO - 📈 Market Status: OPEN
+2025-11-04 15:04:01,846 - INFO - ======================================================================
+2025-11-04 15:04:01,846 - WARNING - Not authenticated - using simulated data
+2025-11-04 15:04:01,846 - WARNING - ⚠️ Using simulated data (market closed or connection issue)
+2025-11-04 15:04:01,853 - INFO - 💹 Close: ₹25917.14
+2025-11-04 15:04:01,854 - INFO - 📈 EMAs: Fast=25895.10 | Slow=25894.39 | Trend=25391.32
+2025-11-04 15:04:01,854 - INFO - 📊 ATR: 68.17 | VWAP: 25031.31
+2025-11-04 15:07:44,850 - INFO - Connecting to Angel One API...
+2025-11-04 15:07:45,443 - ERROR - Authentication Failed: Invalid clientcode parameter name
+2025-11-04 15:07:45,444 - ERROR - Check your credentials!
+2025-11-04 15:07:45,446 - INFO - ======================================================================
+2025-11-04 15:07:45,446 - INFO - 🚀 PAPER TRADING BOT INITIALIZED (SIMULATION)
+2025-11-04 15:07:45,446 - INFO - 📊 Strategy: EMA(9/21/200) + VWAP + ATR
+2025-11-04 15:07:45,446 - INFO - ⏱️ Timeframe: 5-minute candles
+2025-11-04 15:07:45,447 - INFO - 🛡️ Risk: Max 3 trades/day, 3 losses
+2025-11-04 15:07:45,447 - INFO - 💰 Transaction costs: ₹216 per trade (simulated)
+2025-11-04 15:07:45,447 - INFO - 🎯 Symbol: NIFTY FUT
+2025-11-04 15:07:45,599 - INFO - 📈 Market Status: OPEN
+2025-11-04 15:07:45,599 - INFO - ======================================================================
+2025-11-04 15:07:45,600 - WARNING - Not authenticated - using simulated data
+2025-11-04 15:07:45,600 - WARNING - ⚠️ Using simulated data (market closed or connection issue)
+2025-11-04 15:07:45,609 - INFO - 💹 Close: ₹24961.92
+2025-11-04 15:07:45,609 - INFO - 📈 EMAs: Fast=24971.44 | Slow=24966.52 | Trend=25062.82
+2025-11-04 15:07:45,610 - INFO - 📊 ATR: 83.55 | VWAP: 24918.52
+2025-11-04 15:08:20,880 - INFO - Connecting to Angel One API...
+2025-11-04 15:08:22,105 - INFO - Angel One API Connected Successfully!
+2025-11-04 15:08:22,106 - INFO - Using Manual Token: NIFTY061125FUT | 11069
+2025-11-04 15:08:22,108 - INFO - ======================================================================
+2025-11-04 15:08:22,108 - INFO - 🚀 PAPER TRADING BOT INITIALIZED (LIVE DATA)
+2025-11-04 15:08:22,108 - INFO - 📊 Strategy: EMA(9/21/200) + VWAP + ATR
+2025-11-04 15:08:22,108 - INFO - ⏱️ Timeframe: 5-minute candles
+2025-11-04 15:08:22,108 - INFO - 🛡️ Risk: Max 3 trades/day, 3 losses
+2025-11-04 15:08:22,108 - INFO - 💰 Transaction costs: ₹216 per trade (simulated)
+2025-11-04 15:08:22,109 - INFO - 🎯 Symbol: NIFTY061125FUT
+2025-11-04 15:08:22,292 - INFO - 📈 Market Status: OPEN
+2025-11-04 15:08:22,292 - INFO - ======================================================================
+2025-11-04 15:08:22,293 - INFO - Fetching candles: 2025-11-03 14:08 to 2025-11-04 15:08
+2025-11-04 15:08:23,015 - WARNING - No data: SUCCESS
+2025-11-04 15:08:23,017 - WARNING - ⚠️ Using simulated data (market closed or connection issue)
+2025-11-04 15:08:23,028 - INFO - 💹 Close: ₹24481.55
+2025-11-04 15:08:23,029 - INFO - 📈 EMAs: Fast=24384.50 | Slow=24339.17 | Trend=24353.52
+2025-11-04 15:08:23,029 - INFO - 📊 ATR: 68.87 | VWAP: 24397.68
+2025-11-04 15:09:49,261 - INFO - Connecting to Angel One API...
+2025-11-04 15:09:50,546 - INFO - Angel One API Connected Successfully!
+2025-11-04 15:09:50,547 - INFO - Using Manual Token: NIFTY061125FUT | 11069
+2025-11-04 15:09:50,549 - INFO - ======================================================================
+2025-11-04 15:09:50,550 - INFO - 🚀 PAPER TRADING BOT INITIALIZED (LIVE DATA)
+2025-11-04 15:09:50,550 - INFO - 📊 Strategy: EMA(9/21/200) + VWAP + ATR
+2025-11-04 15:09:50,551 - INFO - ⏱️ Timeframe: 5-minute candles
+2025-11-04 15:09:50,552 - INFO - 🛡️ Risk: Max 3 trades/day, 3 losses
+2025-11-04 15:09:50,554 - INFO - 💰 Transaction costs: ₹216 per trade (simulated)
+2025-11-04 15:09:50,555 - INFO - 🎯 Symbol: NIFTY061125FUT
+2025-11-04 15:09:50,810 - INFO - 📈 Market Status: OPEN
+2025-11-04 15:09:50,810 - INFO - ======================================================================
+2025-11-04 15:09:50,811 - INFO - Fetching candles: 2025-11-03 14:09 to 2025-11-04 15:09
+2025-11-04 15:09:51,562 - WARNING - No data: SUCCESS
+2025-11-04 15:09:51,563 - WARNING - ⚠️ Using simulated data (market closed or connection issue)
+2025-11-04 15:09:51,577 - INFO - 💹 Close: ₹24601.33
+2025-11-04 15:09:51,577 - INFO - 📈 EMAs: Fast=24527.18 | Slow=24514.28 | Trend=24538.59
+2025-11-04 15:09:51,578 - INFO - 📊 ATR: 75.67 | VWAP: 24501.36
+2025-11-04 15:14:07,227 - INFO - Connecting to Angel One API...
+2025-11-04 15:14:08,267 - INFO - Angel One API Connected Successfully!
+2025-11-04 15:14:08,267 - INFO - Using Manual Token: NIFTY061125FUT | 11069
+2025-11-04 15:14:08,270 - INFO - ======================================================================
+2025-11-04 15:14:08,270 - INFO - 🚀 PAPER TRADING BOT INITIALIZED (LIVE DATA)
+2025-11-04 15:14:08,270 - INFO - 📊 Strategy: EMA(9/21/200) + VWAP + ATR
+2025-11-04 15:14:08,271 - INFO - ⏱️ Timeframe: 5-minute candles
+2025-11-04 15:14:08,271 - INFO - 🛡️ Risk: Max 3 trades/day, 3 losses
+2025-11-04 15:14:08,271 - INFO - 💰 Transaction costs: ₹216 per trade (simulated)
+2025-11-04 15:14:08,272 - INFO - 🎯 Symbol: NIFTY061125FUT
+2025-11-04 15:14:08,394 - INFO - 📈 Market Status: OPEN
+2025-11-04 15:14:08,395 - INFO - ======================================================================
+2025-11-04 15:14:08,395 - INFO - Fetching candles: 2025-11-03 14:14 to 2025-11-04 15:14
+2025-11-04 15:14:08,842 - WARNING - No data: SUCCESS
+2025-11-04 15:14:08,843 - WARNING - ⚠️ Using simulated data (market closed or connection issue)
+2025-11-04 15:14:08,850 - INFO - 💹 Close: ₹26106.76
+2025-11-04 15:14:08,850 - INFO - 📈 EMAs: Fast=26114.61 | Slow=26090.25 | Trend=25481.97
+2025-11-04 15:14:08,850 - INFO - 📊 ATR: 63.27 | VWAP: 25112.30
+2025-11-04 15:14:49,194 - INFO - Connecting to Angel One API...
+2025-11-04 15:14:50,084 - INFO - Angel One API Connected Successfully!
+2025-11-04 15:14:50,085 - INFO - Using Manual Token: NIFTY061125FUT | 11069
+2025-11-04 15:14:50,087 - INFO - ======================================================================
+2025-11-04 15:14:50,087 - INFO - 🚀 PAPER TRADING BOT INITIALIZED (LIVE DATA)
+2025-11-04 15:14:50,087 - INFO - 📊 Strategy: EMA(9/21/200) + VWAP + ATR
+2025-11-04 15:14:50,087 - INFO - ⏱️ Timeframe: 5-minute candles
+2025-11-04 15:14:50,087 - INFO - 🛡️ Risk: Max 3 trades/day, 3 losses
+2025-11-04 15:14:50,087 - INFO - 💰 Transaction costs: ₹216 per trade (simulated)
+2025-11-04 15:14:50,087 - INFO - 🎯 Symbol: NIFTY061125FUT
+2025-11-04 15:14:50,238 - INFO - 📈 Market Status: OPEN
+2025-11-04 15:14:50,239 - INFO - ======================================================================
+2025-11-04 15:14:50,239 - INFO - Fetching candles: 2025-11-03 14:14 to 2025-11-04 15:14
+2025-11-04 15:14:50,661 - WARNING - No data: SUCCESS
+2025-11-04 15:14:50,662 - WARNING - ⚠️ Using simulated data (market closed or connection issue)
+2025-11-04 15:14:50,672 - INFO - 💹 Close: ₹26126.56
+2025-11-04 15:14:50,672 - INFO - 📈 EMAs: Fast=26218.96 | Slow=26225.14 | Trend=25701.27
+2025-11-04 15:14:50,673 - INFO - 📊 ATR: 76.64 | VWAP: 25276.24
+2025-11-04 15:16:31,810 - INFO - Connecting to Angel One API...
+2025-11-04 15:16:32,746 - INFO - Angel One API Connected Successfully!
+2025-11-04 15:16:32,746 - INFO - Using Manual Token: NIFTY061125FUT | 11069
+2025-11-04 15:16:32,749 - INFO - ======================================================================
+2025-11-04 15:16:32,750 - INFO - PAPER TRADING BOT INITIALIZED (LIVE DATA)
+2025-11-04 15:16:32,750 - INFO - Strategy: EMA(9/21/200) + VWAP + ATR
+2025-11-04 15:16:32,751 - INFO - Timeframe: 5-minute candles
+2025-11-04 15:16:32,751 - INFO - Risk: Max 3 trades/day, 3 losses
+2025-11-04 15:16:32,752 - INFO - Transaction costs: ₹216 per trade (simulated)
+2025-11-04 15:16:32,752 - INFO - Symbol: NIFTY061125FUT
+2025-11-04 15:16:32,892 - INFO - Market Status: OPEN
+2025-11-04 15:16:32,892 - INFO - ======================================================================
+2025-11-04 15:16:32,893 - INFO - Fetching candles: 2025-11-03 14:16 to 2025-11-04 15:16
+2025-11-04 15:16:33,486 - WARNING - No data: SUCCESS
+2025-11-04 15:16:33,487 - WARNING - Using simulated data (market closed or connection issue)
+2025-11-04 15:16:33,497 - INFO - Close: ₹23187.15
+2025-11-04 15:16:33,498 - INFO - EMAs: Fast=23266.29 | Slow=23313.41 | Trend=23594.03
+2025-11-04 15:16:33,498 - INFO - ATR: 79.70 | VWAP: 23661.08
+2025-11-04 15:16:33,498 - INFO - Starting paper trading bot...
+2025-11-04 15:16:33,499 - INFO - Running for 100 iterations (~500 minutes)
+2025-11-04 15:16:33,499 - INFO - Press Ctrl+C to stop
+
+2025-11-04 15:16:33,499 - INFO - Fetching candles: 2025-11-04 15:06 to 2025-11-04 15:16
+2025-11-04 15:16:34,143 - WARNING - No data: SUCCESS
+2025-11-04 15:16:34,149 - INFO - SIM: Close: ₹23196.66
+2025-11-04 15:18:23,436 - INFO - 
+Stopped by user
+2025-11-04 15:18:23,437 - INFO - 
+Session duration: 0.0 hours
+2025-11-04 15:18:23,442 - INFO - ======================================================================
+2025-11-04 15:18:23,443 - INFO - PAPER TRADING PERFORMANCE REPORT
+2025-11-04 15:18:23,444 - INFO - ======================================================================
+2025-11-04 15:18:23,444 - INFO - Total Iterations: 1
+2025-11-04 15:18:23,445 - INFO - Total Trades: 0 | Completed: 0
+2025-11-04 15:18:23,445 - INFO - No completed trades yet
+2025-11-04 15:18:23,446 - INFO - ======================================================================
+2025-11-04 15:18:23,900 - INFO - Logged out from Angel One
+2025-11-04 15:18:27,731 - INFO - Connecting to Angel One API...
+2025-11-04 15:18:28,626 - INFO - Angel One API Connected Successfully!
+2025-11-04 15:18:28,626 - INFO - Using Manual Token: NIFTY27NOV25FUT | 5960
+2025-11-04 15:18:28,628 - INFO - ======================================================================
+2025-11-04 15:18:28,628 - INFO - PAPER TRADING BOT INITIALIZED (LIVE DATA)
+2025-11-04 15:18:28,628 - INFO - Strategy: EMA(9/21/200) + VWAP + ATR
+2025-11-04 15:18:28,628 - INFO - Timeframe: 5-minute candles
+2025-11-04 15:18:28,629 - INFO - Risk: Max 3 trades/day, 3 losses
+2025-11-04 15:18:28,629 - INFO - Transaction costs: ₹216 per trade (simulated)
+2025-11-04 15:18:28,629 - INFO - Symbol: NIFTY27NOV25FUT
+2025-11-04 15:18:28,745 - INFO - Market Status: OPEN
+2025-11-04 15:18:28,745 - INFO - ======================================================================
+2025-11-04 15:18:28,745 - INFO - Fetching candles: 2025-11-03 14:18 to 2025-11-04 15:18
+2025-11-04 15:18:29,175 - WARNING - No data: SUCCESS
+2025-11-04 15:18:29,176 - WARNING - Using simulated data (market closed or connection issue)
+2025-11-04 15:18:29,186 - INFO - Close: ₹24624.08
+2025-11-04 15:18:29,186 - INFO - EMAs: Fast=24616.74 | Slow=24653.56 | Trend=24734.57
+2025-11-04 15:18:29,186 - INFO - ATR: 69.83 | VWAP: 24752.89
+2025-11-04 15:18:29,186 - INFO - Starting paper trading bot...
+2025-11-04 15:18:29,187 - INFO - Running for 100 iterations (~500 minutes)
+2025-11-04 15:18:29,187 - INFO - Press Ctrl+C to stop
+
+2025-11-04 15:18:29,187 - INFO - Fetching candles: 2025-11-04 15:08 to 2025-11-04 15:18
+2025-11-04 15:18:29,621 - WARNING - No data: SUCCESS
+2025-11-04 15:18:29,626 - INFO - SIM: Close: ₹24651.96
+2025-11-04 15:20:43,599 - INFO - 
+Stopped by user
+2025-11-04 15:20:43,600 - INFO - 
+Session duration: 0.0 hours
+2025-11-04 15:20:43,600 - INFO - ======================================================================
+2025-11-04 15:20:43,600 - INFO - PAPER TRADING PERFORMANCE REPORT
+2025-11-04 15:20:43,601 - INFO - ======================================================================
+2025-11-04 15:20:43,603 - INFO - Total Iterations: 1
+2025-11-04 15:20:43,604 - INFO - Total Trades: 0 | Completed: 0
+2025-11-04 15:20:43,604 - INFO - No completed trades yet
+2025-11-04 15:20:43,605 - INFO - ======================================================================
+2025-11-04 15:20:44,054 - INFO - Logged out from Angel One

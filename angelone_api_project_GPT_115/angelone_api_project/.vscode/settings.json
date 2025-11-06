@@ -1,0 +1,7 @@
+{
+    "python-envs.pythonProjects": [],
+    "python.defaultInterpreterPath": "./venv/Scripts/python.exe",
+    "python.analysis.extraPaths": ["./src"],
+    "files.autoSave": "onFocusChange",
+    "python.formatting.provider": "black"
+}

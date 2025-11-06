@@ -1,0 +1,114 @@
+================================================================================
+FREQUENTLY USED COMMANDS - ANGEL ONE MIRRORING SYSTEM
+================================================================================
+
+🐍 PYTHON & VIRTUAL ENVIRONMENT COMMANDS
+================================================================================
+
+# Activate virtual environment (Windows)
+venv\Scripts\activate
+
+# Deactivate virtual environment  
+deactivate
+
+# Install required packages
+pip install smartapi-python pyotp pandas requests flask
+
+# Check installed packages
+pip list
+
+================================================================================
+📁 PROJECT NAVIGATION COMMANDS
+================================================================================
+
+# Navigate to project directory
+cd D:\tax\angelone_api_project
+
+# List directory contents
+dir
+
+# Check current directory
+cd
+
+================================================================================
+🎮 APPLICATION COMMANDS (Inside main.py)
+================================================================================
+
+start     - Start monitoring (checks every 10 seconds)
+stop      - Stop monitoring
+status    - Show current system status
+enable    - Enable trade mirroring
+disable   - Disable trade mirroring
+emergency - Emergency stop all mirroring
+exit      - Exit application
+
+================================================================================
+🔧 VS CODE SPECIFIC COMMANDS
+================================================================================
+
+Ctrl + `              - Open integrated terminal
+Ctrl + F5             - Run without debugging
+F5                    - Run with debugging
+Ctrl + Shift + P      - Command palette
+Ctrl + P              - Quick file open
+Ctrl + Shift + E      - Explorer
+
+================================================================================
+🔐 TESTING COMMANDS
+================================================================================
+
+# Run main application
+python main.py
+
+# Test authentication
+python tests/test_auth.py
+
+# Test trade detection
+python tests/test_trade_detector.py
+
+# Test safety features
+python tests/test_safety.py
+
+# Test with mock data
+python tests/test_with_mock_data.py
+
+================================================================================
+🐛 DEBUGGING COMMANDS
+================================================================================
+
+# View log files
+type mirroring_20251031.log
+
+# Debug API responses
+python tests/debug_trade_api.py
+
+================================================================================
+🚀 MONDAY TESTING QUICK START
+================================================================================
+
+1. cd D:\tax\angelone_api_project
+2. venv\Scripts\activate
+3. python main.py
+4. start     (Start monitoring)
+5. status    (Check system)
+6. enable    (Enable mirroring when ready)
+
+================================================================================
+⚠️ EMERGENCY COMMANDS
+================================================================================
+
+emergency - Immediate stop all mirroring
+stop      - Graceful shutdown
+Ctrl + C  - Force quit application
+
+================================================================================
+📊 SYSTEM STATUS INDICATORS
+================================================================================
+
+✅ Monitoring STARTED - System running
+✅ Authenticated Accounts - Both accounts connected
+🎯 Mirroring Enabled - Ready to mirror trades
+📈 Trades Processed - Number of trades detected
+🚨 Emergency Stop - Safety lock active
+
+================================================================================
