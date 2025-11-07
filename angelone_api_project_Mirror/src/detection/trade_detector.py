@@ -2,15 +2,61 @@ import logging
 import time
 from datetime import datetime
 import json
+import os
+import sqlite3
 
 class TradeDetector:
     def __init__(self, config_manager, auth_manager):
         self.config = config_manager
         self.auth = auth_manager
         self.logger = logging.getLogger('trade_detector')
-        self.processed_trades = set()  # Track already processed trades
+        # Persistent processed trades (SQLite)
+        db_path = self.config.get_settings().get('processed_trades_db', 'processed_trades.db')
+        db_dir = os.path.dirname(db_path) or '.'
+        if db_dir and not os.path.exists(db_dir):
+            os.makedirs(db_dir, exist_ok=True)
+        self._db_path = db_path
+
+        # Add error handling for DB connection
+        try:
+            self._conn = sqlite3.connect(self._db_path, check_same_thread=False)
+            self._ensure_table()
+        except sqlite3.Error as e:
+            self.logger.error(f"Database initialization failed: {e}")
+            # Fallback to in-memory
+            self.processed_trades = set()
+
+        self.processed_trades = self._load_processed_trades()
         self.last_check_time = None
     
+    def _ensure_table(self):
+        cur = self._conn.cursor()
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS processed_trades (
+                trade_key TEXT PRIMARY KEY,
+                first_seen TIMESTAMP
+            )
+        """)
+        self._conn.commit()
+
+    def _load_processed_trades(self):
+        cur = self._conn.cursor()
+        cur.execute("SELECT trade_key FROM processed_trades")
+        rows = cur.fetchall()
+        return set(r[0] for r in rows)
+
+    def _persist_trade_key(self, trade_key):
+        try:
+            cur = self._conn.cursor()
+            cur.execute(
+                "INSERT OR IGNORE INTO processed_trades (trade_key, first_seen) VALUES (?, ?)",
+                (trade_key, datetime.now().isoformat())
+            )
+            self._conn.commit()
+        except Exception as e:
+            self.logger.error(f"Failed to persist trade_key {trade_key}: {e}")
+            # don't raise - persistence failure shouldn't block detection
+            return
     def get_source_connection(self):
         """Get authenticated connection for source account"""
         return self.auth.get_connection('source_account')
@@ -79,8 +125,15 @@ class TradeDetector:
         return trade_key not in self.processed_trades
     
     def is_nifty_option(self, symbol):
-        """Check if trade is a NIFTY option (your focus)"""
-        return 'NIFTY' in symbol and ('CE' in symbol or 'PE' in symbol)
+        """Improved NIFTY option validation"""
+        if not symbol:
+            return False
+        try:
+            # More robust NIFTY detection
+            return ('NIFTY' in symbol.upper() and 
+                   any(x in symbol.upper() for x in ['CE', 'PE', 'CALL', 'PUT']))
+        except:
+            return False
     
     def detect_new_trades(self):
         """
@@ -123,8 +176,9 @@ class TradeDetector:
                 if (self.is_nifty_option(parsed_trade['symbol']) and 
                     self.is_new_trade(parsed_trade['trade_key'])):
                     
-                    # Mark as processed
+                    # Mark as processed (in-memory + persistent)
                     self.processed_trades.add(parsed_trade['trade_key'])
+                    self._persist_trade_key(parsed_trade['trade_key'])
                     new_trades.append(parsed_trade)
                     
                     self.logger.info(f"NEW TRADE DETECTED: {parsed_trade['symbol']} "
@@ -154,8 +208,24 @@ class TradeDetector:
     
     def clear_processed_trades(self):
         """Clear processed trades history (for testing)"""
-        self.processed_trades.clear()
-        self.logger.info("Cleared processed trades history")
+        try:
+            cur = self._conn.cursor()
+            cur.execute("DELETE FROM processed_trades")
+            self._conn.commit()
+            self.processed_trades.clear()
+            self.logger.info("Cleared processed trades history (persistent DB cleared)")
+        except Exception as e:
+            self.logger.error(f"Failed to clear processed trades DB: {e}")
+            # fallback to in-memory clear
+            self.processed_trades.clear()
+            self.logger.info("Cleared processed trades history (in-memory)")
+
+    def __del__(self):
+        try:
+            if hasattr(self, '_conn') and self._conn:
+                self._conn.close()
+        except Exception:
+            pass
 
 # Test function for this module
 def test_trade_detector():

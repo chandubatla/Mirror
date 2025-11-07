@@ -1,11 +1,11 @@
 import json
 import os
 from dotenv import load_dotenv
-import os
-load_dotenv(dotenv_path="D:/tax/config.env")
-load_dotenv(dotenv_path="../.env")   # go one directory up
+
 class ConfigManager:
     def __init__(self):
+        load_dotenv(dotenv_path="/root/config.env")
+        load_dotenv(dotenv_path="../.env")
         self.accounts = self.load_accounts()
         self.settings = self.load_settings()
     
@@ -33,15 +33,49 @@ class ConfigManager:
         }
     
     def load_settings(self):
-        """Load mirroring settings"""
-        return {
-            'check_interval': 10,  # Check for new trades every 10 seconds
-            'slippage_tolerance': 1.0,  # 1% price tolerance
+        """Load settings with defaults"""
+        settings = {
+            'dry_run': True,  # Safe default
+            'max_trade_qty': 50,
+            'price_tolerance': 0.01,
             'max_retries': 3,
-            'mirror_enabled': False,  # Start with mirroring disabled
-            'log_level': 'INFO'
+            'retry_delay': 2,
+            'check_interval': 10,
+            'processed_trades_db': 'data/processed_trades.db',
+            'mirror_enabled': False  # Add missing setting
         }
+        
+        # Override from env/config
+        config_settings = self._load_from_env_or_file()
+        settings.update(config_settings)
+        
+        return settings
     
+    def _load_from_env_or_file(self):
+        """Load settings from environment variables or config file"""
+        config_settings = {}
+        
+        # Load from environment variables if present
+        env_mappings = {
+            'DRY_RUN': ('dry_run', lambda x: x.lower() == 'true'),
+            'MAX_TRADE_QTY': ('max_trade_qty', int),
+            'PRICE_TOLERANCE': ('price_tolerance', float),
+            'MAX_RETRIES': ('max_retries', int),
+            'RETRY_DELAY': ('retry_delay', int),
+            'CHECK_INTERVAL': ('check_interval', int),
+            'PROCESSED_TRADES_DB': ('processed_trades_db', str),
+            'MIRROR_ENABLED': ('mirror_enabled', lambda x: x.lower() == 'true')  # Add env mapping
+        }
+
+        for env_key, (setting_key, converter) in env_mappings.items():
+            if env_value := os.getenv(env_key):
+                try:
+                    config_settings[setting_key] = converter(env_value)
+                except ValueError as e:
+                    self.logger.warning(f"Failed to convert {env_key}: {e}")
+                    
+        return config_settings
+
     def get_account(self, account_id):
         """Get specific account configuration"""
         return self.accounts.get(account_id)

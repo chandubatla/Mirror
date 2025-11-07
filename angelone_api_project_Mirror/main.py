@@ -1,4 +1,5 @@
 import logging
+import logging.handlers
 import time
 import threading
 from datetime import datetime
@@ -7,6 +8,7 @@ from src.auth.auth_manager import AuthManager
 from src.detection.trade_detector import TradeDetector
 from src.safety.safety_manager import SafetyManager
 from src.mirror.mirror_engine import MirrorEngine  # ADD THIS IMPORT
+from src.health.health_monitor import HealthMonitor
 
 class MirroringController:
     def __init__(self):
@@ -15,7 +17,11 @@ class MirroringController:
             level=logging.INFO,
             format='%(asctime)s - %(levelname)s - %(name)s - %(message)s',
             handlers=[
-                logging.FileHandler(f'mirroring_{datetime.now().strftime("%Y%m%d")}.log'),
+                logging.handlers.RotatingFileHandler(
+                    f'mirroring_{datetime.now().strftime("%Y%m%d")}.log',
+                    maxBytes=5_000_000,
+                    backupCount=5
+                ),
                 logging.StreamHandler()
             ]
         )
@@ -27,6 +33,12 @@ class MirroringController:
         self.detector = TradeDetector(self.config, self.auth)
         self.safety = SafetyManager(self.config)
         self.mirror_engine = MirrorEngine(self.config, self.auth, self.safety)  # ADD THIS LINE
+        self.health_monitor = HealthMonitor()
+        
+        # Safety defaults
+        settings = self.config.get_settings()
+        self.dry_run = settings.get('dry_run', True)               # NEW: default to safe dry-run
+        self.max_trade_qty = settings.get('max_trade_qty', None)  # NEW: optional per-trade cap
         
         self.running = False
         self.monitoring_thread = None
@@ -37,20 +49,25 @@ class MirroringController:
             self.logger.warning("Monitoring already running")
             return False
         
-        # Authenticate accounts
+        # Authenticate accounts (with retry)
         self.logger.info("Authenticating accounts...")
-        auth_results = self.auth.authenticate_all_accounts()
+        try:
+            auth_results = self._call_with_retry(self.auth.authenticate_all_accounts, max_attempts=3, initial_delay=1)
+        except Exception as e:
+            self.logger.error(f"Authentication failed after retries: {e}. Aborting start.")
+            return False
         
-        for account_id, result in auth_results.items():
-            if result['success']:
-                self.logger.info(f"{account_id}: Authenticated")
-            else:
-                self.logger.error(f"{account_id}: Authentication failed - {result['error']}")
+        # If any account failed, do not start monitoring
+        failed = [k for k,v in auth_results.items() if not v.get('success')]
+        if failed:
+            self.logger.error(f"Authentication failed for accounts: {failed}. Aborting start.")
+            return False
         
         # Start monitoring thread
         self.running = True
         self.monitoring_thread = threading.Thread(target=self._monitoring_loop)
-        self.monitoring_thread.daemon = True
+        # keep non-daemon so join() waits for loop to stop cleanly
+        self.monitoring_thread.daemon = False
         self.monitoring_thread.start()
         
         self.logger.info("Monitoring started (mirroring disabled by default)")
@@ -67,7 +84,11 @@ class MirroringController:
             self.monitoring_thread.join(timeout=5)
         
         # Stop mirroring engine and logout
-        self.mirror_engine.stop()  # ADD THIS LINE
+        if getattr(self, 'mirror_engine', None):
+            try:
+                self.mirror_engine.stop()
+            except Exception:
+                self.logger.exception("Error stopping mirror engine")
         self.auth.logout_all()
         self.logger.info("Monitoring stopped")
         return True
@@ -76,22 +97,36 @@ class MirroringController:
         """Enable trade mirroring"""
         success = self.safety.enable_mirroring()
         if success:
-            self.mirror_engine.start()  # ADD THIS LINE
+            if getattr(self, 'mirror_engine', None):
+                try:
+                    self.mirror_engine.start()
+                except Exception:
+                    self.logger.exception("Error starting mirror engine")
         return success
     
     def disable_mirroring(self):
         """Disable trade mirroring"""
-        self.mirror_engine.stop()  # ADD THIS LINE
+        if getattr(self, 'mirror_engine', None):
+            try:
+                self.mirror_engine.stop()
+            except Exception:
+                self.logger.exception("Error stopping mirror engine")
         return self.safety.disable_mirroring()
     
     def emergency_stop(self):
         """Emergency stop all mirroring"""
-        self.mirror_engine.stop()  # ADD THIS LINE
+        if getattr(self, 'mirror_engine', None):
+            try:
+                self.mirror_engine.stop()
+            except Exception:
+                self.logger.exception("Error stopping mirror engine")
         return self.safety.emergency_stop_mirroring()
     
     def _monitoring_loop(self):
         """Main monitoring loop"""
         self.logger.info("Starting monitoring loop...")
+        # Prefer direct call to ConfigManager.get_settings()
+        check_interval = self.config.get_settings().get('check_interval', 10)
         
         while self.running:
             try:
@@ -99,34 +134,75 @@ class MirroringController:
                 new_trades = self.detector.detect_new_trades()
                 
                 # Process new trades if mirroring is enabled
-                if new_trades and self.safety.mirroring_enabled:
+                if new_trades and getattr(self.safety, 'mirroring_enabled', False):
                     for trade in new_trades:
                         self._process_trade_for_mirroring(trade)
                 
-                # Wait before next check
-                time.sleep(10)  # Check every 10 seconds
+                # Wait before next check (use configured interval)
+                time.sleep(check_interval)
                 
             except Exception as e:
-                self.logger.error(f"Monitoring loop error: {e}")
-                time.sleep(10)  # Wait before retrying
+                self.logger.exception(f"Monitoring loop error: {e}")
+                time.sleep(min(check_interval, 10))
     
+    def _call_with_retry(self, func, *args, max_attempts=3, initial_delay=1, backoff=2, **kwargs):
+        """Call func with simple retry/backoff; raises last exception if all attempts fail"""
+        delay = initial_delay
+        last_exc = None
+        for attempt in range(1, max_attempts + 1):
+            try:
+                return func(*args, **kwargs)
+            except Exception as e:
+                last_exc = e
+                self.logger.warning(f"Attempt {attempt} for {getattr(func, '__name__', str(func))} failed: {e}")
+                if attempt == max_attempts:
+                    break
+                time.sleep(delay)
+                delay *= backoff
+        raise last_exc
+
     def _process_trade_for_mirroring(self, trade):
         """Process a trade for mirroring (safety checks + actual mirroring)"""
+        # Safety checks
         can_mirror, reason = self.safety.can_mirror_trade(trade)
+
+        # If safety gate fails, skip mirroring
+        if not can_mirror:
+            self.logger.warning(f"SKIP MIRRORING: {trade.get('symbol')} | Reason: {reason}")
+            return
+
+        # Basic safety / limits (log if exceeding configured cap, but allow if safety approved)
+        if self.max_trade_qty is not None and trade.get('quantity', 0) > self.max_trade_qty:
+            self.logger.warning(f"Trade qty {trade.get('quantity')} exceeds max_trade_qty {self.max_trade_qty}; proceeding because safety approved")
         
         if can_mirror:
-            self.logger.info(f"READY TO MIRROR: {trade['symbol']} | "
-                           f"Qty: {trade['quantity']} | Price: {trade['order_price']}")
-            
-            # ACTUAL MIRRORING LOGIC - ADD THIS BLOCK
-            success = self.mirror_engine.mirror_trade(trade)
+            self.logger.info(f"READY TO MIRROR: {trade['symbol']} | Qty: {trade['quantity']} | Price: {trade['order_price']}")
+            if self.dry_run:
+                # Do not execute real orders in dry-run mode
+                self.logger.info(f"DRY-RUN: simulated mirroring of {trade['symbol']} qty {trade['quantity']}")
+                # If mirror_engine exposes bookkeeping for tests/stats, update it (best-effort)
+                try:
+                    if getattr(self.mirror_engine, 'mirrored_trades', None) is not None:
+                        self.mirror_engine.mirrored_trades.append(trade)
+                except Exception:
+                    # Non-critical in dry-run
+                    self.logger.debug("mirror_engine bookkeeping not available during dry-run")
+                return
+
+            # Attempt real mirroring with retries
+            try:
+                success = self.mirror_engine.mirror_trade(trade)
+                self.health_monitor.record_trade(success)
+            except Exception as e:
+                self.health_monitor.record_trade(False, str(e))
+                raise
+
             if success:
                 self.logger.info(f"✅ SUCCESSFULLY MIRRORED: {trade['symbol']}")
             else:
                 self.logger.error(f"❌ FAILED TO MIRROR: {trade['symbol']}")
-                
         else:
-            self.logger.warning(f"SKIP MIRRORING: {trade['symbol']} | Reason: {reason}")
+            self.logger.warning(f"SKIP MIRRORING: {trade.get('symbol')} | Reason: {reason}")
     
     def get_status(self):
         """Get current system status"""
@@ -142,7 +218,7 @@ class MirroringController:
             'accounts_authenticated': list(self.auth.get_all_connections().keys())
         }
     
-    def print_status(self):  # ADD THIS METHOD
+    def print_status(self):
         """Print formatted status"""
         status = self.get_status()
         print("\n" + "="*50)
@@ -160,6 +236,15 @@ def main():
     """Main function with interactive controls"""
     controller = MirroringController()
     
+    # handle signals for graceful shutdown
+    import signal
+    def _handle_signal(signum, frame):
+        print("\nSignal received, stopping...")
+        controller.stop_monitoring()
+        raise SystemExit(0)
+    signal.signal(signal.SIGINT, _handle_signal)
+    signal.signal(signal.SIGTERM, _handle_signal)
+    
     print("Angel One Mirroring System")
     print("="*40)
     print("Commands: start, stop, enable, disable, emergency, status, exit")
@@ -171,7 +256,8 @@ def main():
             
             if command == 'start':
                 if controller.start_monitoring():
-                    print("Monitoring STARTED - Checking for trades every 10 seconds")
+                    interval = controller.config.get_settings().get('check_interval', 10)
+                    print(f"Monitoring STARTED - Checking for trades every {interval} seconds")
                 else:
                     print("Failed to start monitoring")
                     
@@ -196,7 +282,7 @@ def main():
                 print("EMERGENCY STOP ACTIVATED - All mirroring stopped")
                 
             elif command == 'status':
-                controller.print_status()  # UPDATED THIS LINE
+                controller.print_status()
                 
             elif command in ['exit', 'quit']:
                 controller.stop_monitoring()

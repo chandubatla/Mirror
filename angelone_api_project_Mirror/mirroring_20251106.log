@@ -1,0 +1,69 @@
+2025-11-06 14:50:06,245 - INFO - controller - Authenticating accounts...
+2025-11-06 14:50:06,245 - ERROR - auth_manager - Auth exception for source_account: Exception during authentication: object of type 'NoneType' has no len()
+2025-11-06 14:50:06,245 - ERROR - auth_manager - Auth exception for mirror_account: Exception during authentication: object of type 'NoneType' has no len()
+2025-11-06 14:50:06,245 - ERROR - controller - source_account: Authentication failed - Exception during authentication: object of type 'NoneType' has no len()
+2025-11-06 14:50:06,245 - ERROR - controller - mirror_account: Authentication failed - Exception during authentication: object of type 'NoneType' has no len()
+2025-11-06 14:50:06,245 - INFO - controller - Starting monitoring loop...
+2025-11-06 14:50:06,245 - INFO - controller - Monitoring started (mirroring disabled by default)
+2025-11-06 14:50:06,245 - INFO - trade_detector - Checking for new trades...
+2025-11-06 14:50:06,246 - ERROR - trade_detector - No connection to source account
+2025-11-06 14:50:06,246 - ERROR - trade_detector - No trade data received from API
+2025-11-06 14:50:16,249 - INFO - trade_detector - Checking for new trades...
+2025-11-06 14:50:16,249 - ERROR - trade_detector - No connection to source account
+2025-11-06 14:50:16,249 - ERROR - trade_detector - No trade data received from API
+2025-11-06 14:50:24,343 - INFO - mirror_engine - MIRRORING ENGINE STOPPED
+2025-11-06 14:50:24,343 - INFO - controller - Monitoring stopped
+2025-11-06 15:14:04,498 - INFO - controller - Authenticating accounts...
+2025-11-06 15:14:04,498 - ERROR - auth_manager - Auth exception for source_account: Exception during authentication: object of type 'NoneType' has no len()
+2025-11-06 15:14:04,499 - ERROR - auth_manager - Auth exception for mirror_account: Exception during authentication: object of type 'NoneType' has no len()
+2025-11-06 15:14:04,499 - ERROR - controller - source_account: Authentication failed - Exception during authentication: object of type 'NoneType' has no len()
+2025-11-06 15:14:04,499 - ERROR - controller - mirror_account: Authentication failed - Exception during authentication: object of type 'NoneType' has no len()
+2025-11-06 15:14:04,499 - INFO - controller - Starting monitoring loop...
+2025-11-06 15:14:04,499 - INFO - controller - Monitoring started (mirroring disabled by default)
+2025-11-06 15:14:04,499 - INFO - trade_detector - Checking for new trades...
+2025-11-06 15:14:04,499 - ERROR - trade_detector - No connection to source account
+2025-11-06 15:14:04,499 - ERROR - trade_detector - No trade data received from API
+2025-11-06 15:14:14,509 - INFO - trade_detector - Checking for new trades...
+2025-11-06 15:14:14,510 - ERROR - trade_detector - No connection to source account
+2025-11-06 15:14:14,510 - ERROR - trade_detector - No trade data received from API
+2025-11-06 15:14:24,520 - INFO - trade_detector - Checking for new trades...
+2025-11-06 15:14:24,520 - ERROR - trade_detector - No connection to source account
+2025-11-06 15:14:24,520 - ERROR - trade_detector - No trade data received from API
+2025-11-06 15:14:34,530 - INFO - trade_detector - Checking for new trades...
+2025-11-06 15:14:34,531 - ERROR - trade_detector - No connection to source account
+2025-11-06 15:14:34,531 - ERROR - trade_detector - No trade data received from API
+2025-11-06 15:14:44,537 - INFO - trade_detector - Checking for new trades...
+2025-11-06 15:14:44,537 - ERROR - trade_detector - No connection to source account
+2025-11-06 15:14:44,538 - ERROR - trade_detector - No trade data received from API
+2025-11-06 15:14:54,545 - INFO - trade_detector - Checking for new trades...
+2025-11-06 15:14:54,545 - ERROR - trade_detector - No connection to source account
+2025-11-06 15:14:54,546 - ERROR - trade_detector - No trade data received from API
+2025-11-06 15:15:04,553 - INFO - trade_detector - Checking for new trades...
+2025-11-06 15:15:04,553 - ERROR - trade_detector - No connection to source account
+2025-11-06 15:15:04,553 - ERROR - trade_detector - No trade data received from API
+2025-11-06 15:15:14,563 - INFO - trade_detector - Checking for new trades...
+2025-11-06 15:15:14,564 - ERROR - trade_detector - No connection to source account
+2025-11-06 15:15:14,564 - ERROR - trade_detector - No trade data received from API
+2025-11-06 15:15:24,574 - INFO - trade_detector - Checking for new trades...
+2025-11-06 15:15:24,574 - ERROR - trade_detector - No connection to source account
+2025-11-06 15:15:24,574 - ERROR - trade_detector - No trade data received from API
+2025-11-06 15:15:34,581 - INFO - trade_detector - Checking for new trades...
+2025-11-06 15:15:34,581 - ERROR - trade_detector - No connection to source account
+2025-11-06 15:15:34,582 - ERROR - trade_detector - No trade data received from API
+2025-11-06 15:15:44,592 - INFO - trade_detector - Checking for new trades...
+2025-11-06 15:15:44,592 - ERROR - trade_detector - No connection to source account
+2025-11-06 15:15:44,592 - ERROR - trade_detector - No trade data received from API
+2025-11-06 15:15:54,597 - INFO - trade_detector - Checking for new trades...
+2025-11-06 15:15:54,597 - ERROR - trade_detector - No connection to source account
+2025-11-06 15:15:54,598 - ERROR - trade_detector - No trade data received from API
+2025-11-06 15:16:04,605 - INFO - trade_detector - Checking for new trades...
+2025-11-06 15:16:04,605 - ERROR - trade_detector - No connection to source account
+2025-11-06 15:16:04,606 - ERROR - trade_detector - No trade data received from API
+2025-11-06 15:16:14,616 - INFO - trade_detector - Checking for new trades...
+2025-11-06 15:16:14,616 - ERROR - trade_detector - No connection to source account
+2025-11-06 15:16:14,616 - ERROR - trade_detector - No trade data received from API
+2025-11-06 15:16:24,626 - INFO - trade_detector - Checking for new trades...
+2025-11-06 15:16:24,626 - ERROR - trade_detector - No connection to source account
+2025-11-06 15:16:24,627 - ERROR - trade_detector - No trade data received from API
+2025-11-06 15:16:29,973 - INFO - mirror_engine - MIRRORING ENGINE STOPPED
+2025-11-06 15:16:29,973 - INFO - controller - Monitoring stopped
