@@ -1,4 +1,5 @@
 import logging
+from logging import config
 import logging.handlers
 import time
 import threading
@@ -7,7 +8,7 @@ from src.config.config_manager import ConfigManager
 from src.auth.auth_manager import AuthManager
 from src.detection.trade_detector import TradeDetector
 from src.safety.safety_manager import SafetyManager
-from src.mirror.mirror_engine import MirrorEngine  # ADD THIS IMPORT
+from src.mirror.mirror_engine import MirrorEngine
 from src.health.health_monitor import HealthMonitor
 
 class MirroringController:
@@ -32,8 +33,12 @@ class MirroringController:
         self.auth = AuthManager(self.config)
         self.detector = TradeDetector(self.config, self.auth)
         self.safety = SafetyManager(self.config)
-        self.mirror_engine = MirrorEngine(self.config, self.auth, self.safety)  # ADD THIS LINE
+        self.mirror_engine = MirrorEngine(self.config, self.auth, self.safety)
         self.health_monitor = HealthMonitor()
+        
+        # Initialize lot size configuration
+        self.LOT_SIZES = ConfigManager.get('LOT_SIZES', {})
+        self.DEFAULT_LOT_SIZE = 75  # Fallback default
         
         # Safety defaults
         settings = self.config.get_settings()
@@ -43,6 +48,75 @@ class MirroringController:
         self.running = False
         self.monitoring_thread = None
         
+    def _get_instrument_lot_size(self, trading_symbol):
+        """
+        Extract base instrument and return lot size from config
+        """
+        if not trading_symbol:
+            return self.DEFAULT_LOT_SIZE
+            
+        trading_symbol_upper = trading_symbol.upper()
+        
+        if 'NIFTY' in trading_symbol_upper and 'BANKNIFTY' not in trading_symbol_upper and 'FINNIFTY' not in trading_symbol_upper:
+            return self.LOT_SIZES.get('NIFTY', self.DEFAULT_LOT_SIZE)
+        elif 'BANKNIFTY' in trading_symbol_upper:
+            return self.LOT_SIZES.get('BANKNIFTY', self.DEFAULT_LOT_SIZE)
+        elif 'FINNIFTY' in trading_symbol_upper:
+            return self.LOT_SIZES.get('FINNIFTY', self.DEFAULT_LOT_SIZE)
+        elif 'MIDCPNIFTY' in trading_symbol_upper:
+            return self.LOT_SIZES.get('MIDCPNIFTY', self.DEFAULT_LOT_SIZE)
+        elif 'SENSEX' in trading_symbol_upper:
+            return self.LOT_SIZES.get('SENSEX', self.DEFAULT_LOT_SIZE)
+        elif 'BANKEX' in trading_symbol_upper:
+            return self.LOT_SIZES.get('BANKEX', self.DEFAULT_LOT_SIZE)
+        else:
+            return self.DEFAULT_LOT_SIZE
+
+    def _convert_to_lot_based_quantity(self, trade):
+        """
+        Convert trade quantity to lot-based quantity
+        Returns: (success, mirrored_qty, lots, lot_size, message)
+        """
+        try:
+            # Get original quantity and convert to int (FIXES THE TYPE ERROR)
+            original_qty = int(trade.get('quantity', 0))
+            trading_symbol = trade.get('symbol', '') or trade.get('trading_symbol', '')
+            
+            # Skip if no quantity or invalid symbol
+            if original_qty <= 0:
+                return False, 0, 0, 0, f"Invalid quantity: {original_qty}"
+                
+            if not trading_symbol:
+                return False, 0, 0, 0, "No trading symbol provided"
+            
+            # Get appropriate lot size for this instrument
+            lot_size = self._get_instrument_lot_size(trading_symbol)
+            
+            # Calculate how many full lots
+            lots = original_qty // lot_size
+            
+            # Skip if less than 1 lot
+            if lots < 1:
+                return False, 0, 0, lot_size, f"Ignoring trade: {original_qty} is less than 1 lot ({lot_size})"
+                
+            # Calculate mirrored quantity
+            mirrored_qty = lots * lot_size
+            
+            # Apply max trade quantity limit (with int conversion fix)
+            if self.max_trade_qty is not None and mirrored_qty > int(self.max_trade_qty):
+                # Cap at max allowed lots
+                max_lots = int(self.max_trade_qty) // lot_size
+                if max_lots < 1:
+                    return False, 0, 0, lot_size, f"Mirrored quantity {mirrored_qty} exceeds max limit {self.max_trade_qty}"
+                
+                mirrored_qty = max_lots * lot_size
+                lots = max_lots
+            
+            return True, mirrored_qty, lots, lot_size, f"Converted {original_qty} -> {mirrored_qty} ({lots} lots of {lot_size})"
+            
+        except Exception as e:
+            return False, 0, 0, 0, f"Error converting to lot quantity: {e}"
+
     def start_monitoring(self):
         """Start the monitoring loop"""
         if self.running:
@@ -162,7 +236,7 @@ class MirroringController:
         raise last_exc
 
     def _process_trade_for_mirroring(self, trade):
-        """Process a trade for mirroring (safety checks + actual mirroring)"""
+        """Process a trade for mirroring with lot-based quantities"""
         # Safety checks
         can_mirror, reason = self.safety.can_mirror_trade(trade)
 
@@ -171,15 +245,26 @@ class MirroringController:
             self.logger.warning(f"SKIP MIRRORING: {trade.get('symbol')} | Reason: {reason}")
             return
 
-        # Basic safety / limits (log if exceeding configured cap, but allow if safety approved)
-        if self.max_trade_qty is not None and trade.get('quantity', 0) > self.max_trade_qty:
-            self.logger.warning(f"Trade qty {trade.get('quantity')} exceeds max_trade_qty {self.max_trade_qty}; proceeding because safety approved")
+        # Convert to lot-based quantity
+        success, mirrored_qty, lots, lot_size, conversion_msg = self._convert_to_lot_based_quantity(trade)
+        
+        if not success:
+            self.logger.warning(f"SKIP MIRRORING: {trade.get('symbol')} | {conversion_msg}")
+            return
+
+        # Update trade with mirrored quantity for logging
+        original_qty = trade.get('quantity')
+        trade['original_quantity'] = original_qty
+        trade['quantity'] = mirrored_qty
+        
+        self.logger.info(f"LOT CONVERSION: {conversion_msg} for {trade.get('symbol')}")
         
         if can_mirror:
-            self.logger.info(f"READY TO MIRROR: {trade['symbol']} | Qty: {trade['quantity']} | Price: {trade['order_price']}")
+            self.logger.info(f"READY TO MIRROR: {trade['symbol']} | Qty: {original_qty}→{mirrored_qty} ({lots} lots) | Price: {trade.get('order_price', 'N/A')}")
+            
             if self.dry_run:
                 # Do not execute real orders in dry-run mode
-                self.logger.info(f"DRY-RUN: simulated mirroring of {trade['symbol']} qty {trade['quantity']}")
+                self.logger.info(f"DRY-RUN: simulated mirroring of {trade['symbol']} qty {mirrored_qty} ({lots} lots of {lot_size})")
                 # If mirror_engine exposes bookkeeping for tests/stats, update it (best-effort)
                 try:
                     if getattr(self.mirror_engine, 'mirrored_trades', None) is not None:
@@ -198,9 +283,9 @@ class MirroringController:
                 raise
 
             if success:
-                self.logger.info(f"✅ SUCCESSFULLY MIRRORED: {trade['symbol']}")
+                self.logger.info(f"✅ SUCCESSFULLY MIRRORED: {trade['symbol']} - {lots} lots ({mirrored_qty})")
             else:
-                self.logger.error(f"❌ FAILED TO MIRROR: {trade['symbol']}")
+                self.logger.error(f"❌ FAILED TO MIRROR: {trade['symbol']} - {lots} lots ({mirrored_qty})")
         else:
             self.logger.warning(f"SKIP MIRRORING: {trade.get('symbol')} | Reason: {reason}")
     
@@ -208,14 +293,15 @@ class MirroringController:
         """Get current system status"""
         detector_stats = self.detector.get_detection_stats()
         safety_status = self.safety.get_safety_status()
-        mirror_stats = self.mirror_engine.get_mirror_stats()  # ADD THIS LINE
+        mirror_stats = self.mirror_engine.get_mirror_stats()
         
         return {
             'system_running': self.running,
             'detection_stats': detector_stats,
             'safety_status': safety_status,
-            'mirror_stats': mirror_stats,  # ADD THIS LINE
-            'accounts_authenticated': list(self.auth.get_all_connections().keys())
+            'mirror_stats': mirror_stats,
+            'accounts_authenticated': list(self.auth.get_all_connections().keys()),
+            'lot_sizes': self.LOT_SIZES
         }
     
     def print_status(self):
@@ -230,6 +316,10 @@ class MirroringController:
         print(f"Emergency Stop: {'🔴 ACTIVE' if status['safety_status']['emergency_stop'] else '🟢 INACTIVE'}")
         print(f"Total Trades Detected: {status['detection_stats']['total_processed_trades']}")
         print(f"Total Trades Mirrored: {status['mirror_stats']['total_mirrored']}")
+        print(f"Dry Run Mode: {'✅ ACTIVE' if self.dry_run else '❌ INACTIVE'}")
+        print("Lot Sizes Configuration:")
+        for instrument, lot_size in self.LOT_SIZES.items():
+            print(f"  {instrument}: {lot_size}")
         print("="*50)
 
 def main():

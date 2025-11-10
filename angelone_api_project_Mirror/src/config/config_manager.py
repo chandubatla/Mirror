@@ -29,6 +29,14 @@ class ConfigManager:
                 'MPIN': os.getenv("MIRROR_MPIN"),
                 'TOTP_TOKEN': os.getenv("MIRROR_TOTP_TOKEN"),
                 'name': os.getenv("MIRROR_NAME", "mirror_account")
+            },
+            'LOT_SIZE' : {
+                'NIFTY': 75,
+                'BANKNIFTY': 35,
+                'FINNIFTY': 40,
+                'MIDCPNIFTY': 75,
+                'SENSEX': 15,
+                'BANKEX': 15
             }
         }
     

@@ -298,3 +298,29 @@
 2025-11-07 13:12:25,970 - INFO - auth_manager - Logged out source_account
 2025-11-07 13:12:26,162 - INFO - auth_manager - Logged out mirror_account
 2025-11-07 13:12:26,163 - INFO - controller - Monitoring stopped
+2025-11-07 14:51:14,185 - INFO - controller - Authenticating accounts...
+2025-11-07 14:51:20,703 - INFO - auth_manager - Authenticated source_account successfully
+2025-11-07 14:51:21,271 - INFO - auth_manager - Authenticated mirror_account successfully
+2025-11-07 14:51:21,272 - INFO - controller - Starting monitoring loop...
+2025-11-07 14:51:21,272 - INFO - controller - Monitoring started (mirroring disabled by default)
+2025-11-07 14:51:21,273 - INFO - trade_detector - Checking for new trades...
+2025-11-07 14:51:21,504 - INFO - trade_detector - No new trades found
+2025-11-07 14:51:26,274 - INFO - mirror_engine - MIRRORING ENGINE STOPPED
+2025-11-07 14:51:26,468 - INFO - auth_manager - Logged out source_account
+2025-11-07 14:51:26,661 - INFO - auth_manager - Logged out mirror_account
+2025-11-07 14:51:26,663 - INFO - controller - Monitoring stopped
+2025-11-07 14:51:26,663 - WARNING - controller - Monitoring not running
+2025-11-07 14:52:23,522 - INFO - controller - Authenticating accounts...
+2025-11-07 14:52:36,556 - INFO - auth_manager - Authenticated source_account successfully
+2025-11-07 14:52:42,028 - INFO - auth_manager - Authenticated mirror_account successfully
+2025-11-07 14:52:42,029 - INFO - controller - Starting monitoring loop...
+2025-11-07 14:52:42,029 - INFO - controller - Monitoring started (mirroring disabled by default)
+2025-11-07 14:52:42,030 - INFO - trade_detector - Checking for new trades...
+2025-11-07 14:52:42,030 - INFO - safety_manager - Mirroring ENABLED
+2025-11-07 14:52:42,030 - INFO - mirror_engine - MIRRORING ENGINE STARTED
+2025-11-07 14:52:42,236 - INFO - trade_detector - No new trades found
+2025-11-07 14:52:47,031 - INFO - mirror_engine - MIRRORING ENGINE STOPPED
+2025-11-07 14:52:47,222 - INFO - auth_manager - Logged out source_account
+2025-11-07 14:52:52,418 - INFO - auth_manager - Logged out mirror_account
+2025-11-07 14:52:52,420 - INFO - controller - Monitoring stopped
+2025-11-07 14:52:52,423 - WARNING - controller - Monitoring not running
