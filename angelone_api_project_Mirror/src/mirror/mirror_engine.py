@@ -174,38 +174,47 @@ class MirrorEngine:
     
     def get_symbol_token(self, symbol):
         """
-        Get symbol token using Angel One searchscrip API
-        Args:
-            symbol: Trading symbol (e.g. 'NIFTY25NOV23400CE')
-        Returns:
-            str: Symbol token or None if not found
+        Get symbol token using Angel One search_scrip API
+        Works for both NIFTY and BANKNIFTY options
         """
         try:
-            # Use mirror account connection for consistency
             connection = self.auth.get_connection('mirror_account')
             if not connection:
                 self.logger.error("No connection for symbol lookup")
                 return None
 
-            # Extract NIFTY/symbol part for search
-            search_term = symbol.split('25')[0] if '25' in symbol else 'NIFTY'
+            # ✅ IMPROVED: Extract base symbol for search
+            if 'BANKNIFTY' in symbol:
+                search_term = 'BANKNIFTY'
+            elif 'NIFTY' in symbol:
+                search_term = 'NIFTY'
+            elif 'FINNIFTY' in symbol:
+                search_term = 'FINNIFTY'
+            else:
+                search_term = symbol  # Fallback to full symbol
+            
+            self.logger.info(f"Searching for symbol: {symbol} using term: {search_term}")
             
             # Search with retry
             for attempt in range(self.max_retries):
                 try:
-                    search_response = connection.searchscrip(
+                    # ✅ FIXED: search_scrip (with underscore)
+                    search_response = connection.search_scrip(
                         exchange='NFO',
                         searchscrip=search_term
                     )
                     
                     if search_response and search_response.get('status'):
-                        # Find exact symbol match
+                        # Find exact symbol match in the results
                         for item in search_response.get('data', []):
                             if item.get('symbol') == symbol:
-                                self.logger.info(f"Found token {item['token']} for {symbol}")
-                                return item['token']
+                                token = item['token']
+                                self.logger.info(f"Found token {token} for {symbol}")
+                                return token
                         
-                        self.logger.warning(f"Symbol {symbol} not found in search results")
+                        # If exact match not found, log available symbols for debugging
+                        available_symbols = [item.get('symbol', '') for item in search_response.get('data', [])]
+                        self.logger.warning(f"Symbol {symbol} not found in search results. Available: {available_symbols[:5]}...")  # Show first 5
                         return None
                     else:
                         error = search_response.get('message', 'Unknown error')
@@ -224,7 +233,7 @@ class MirrorEngine:
         except Exception as e:
             self.logger.error(f"Error getting symbol token: {e}")
             return None
-        
+    
     def mirror_trade(self, trade):
         """
         Mirror a single trade to target account with price validation

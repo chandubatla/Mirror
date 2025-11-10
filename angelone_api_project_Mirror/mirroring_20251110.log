@@ -78,3 +78,225 @@ TypeError: '>' not supported between instances of 'str' and 'int'
 2025-11-10 11:08:08,180 - INFO - auth_manager - Logged out mirror_account
 2025-11-10 11:08:08,181 - INFO - controller - Monitoring stopped
 2025-11-10 11:08:10,487 - WARNING - controller - Monitoring not running
+2025-11-10 13:04:21,493 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-10 13:04:36,712 - WARNING - controller - Monitoring not running
+2025-11-10 13:04:46,162 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-10 13:04:53,623 - WARNING - controller - Monitoring not running
+2025-11-10 13:09:12,296 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-10 13:11:48,444 - WARNING - controller - Monitoring not running
+2025-11-10 13:12:43,669 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-10 13:17:14,949 - WARNING - controller - Monitoring not running
+2025-11-10 13:17:23,874 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-10 13:20:40,354 - WARNING - controller - Monitoring not running
+2025-11-10 13:21:14,904 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-10 13:21:49,573 - WARNING - controller - Monitoring not running
+2025-11-10 13:22:24,310 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-10 13:23:17,617 - INFO - controller - Authenticating accounts...
+2025-11-10 13:23:17,618 - ERROR - controller - Authentication failed after retries: 'MirroringController' object has no attribute 'auth'. Aborting start.
+2025-11-10 13:25:36,349 - WARNING - controller - Monitoring not running
+2025-11-10 13:27:19,982 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-10 13:27:31,540 - WARNING - controller - Monitoring not running
+2025-11-10 13:27:40,409 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-10 13:27:49,765 - INFO - controller - Authenticating accounts...
+2025-11-10 13:27:50,196 - INFO - auth_manager - Authenticated source_account successfully
+2025-11-10 13:27:55,629 - INFO - auth_manager - Authenticated mirror_account successfully
+2025-11-10 13:27:55,630 - INFO - controller - Starting monitoring loop...
+2025-11-10 13:27:55,630 - INFO - controller - Monitoring started (mirroring disabled by default)
+2025-11-10 13:27:55,630 - INFO - trade_detector - Checking for new trades...
+2025-11-10 13:27:55,840 - INFO - trade_detector - No new trades found
+2025-11-10 13:28:05,850 - INFO - trade_detector - Checking for new trades...
+2025-11-10 13:28:06,035 - INFO - trade_detector - No new trades found
+2025-11-10 13:28:16,045 - INFO - trade_detector - Checking for new trades...
+2025-11-10 13:28:16,345 - INFO - trade_detector - No new trades found
+2025-11-10 13:28:26,356 - INFO - mirror_engine - MIRRORING ENGINE STOPPED
+2025-11-10 13:28:26,533 - INFO - auth_manager - Logged out source_account
+2025-11-10 13:28:26,708 - INFO - auth_manager - Logged out mirror_account
+2025-11-10 13:28:26,709 - INFO - controller - Monitoring stopped
+2025-11-10 13:35:17,736 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-10 13:35:29,542 - WARNING - controller - Monitoring not running
+2025-11-10 13:35:35,737 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-10 13:36:54,828 - INFO - controller - Authenticating accounts...
+2025-11-10 13:36:55,437 - INFO - auth_manager - Authenticated source_account successfully
+2025-11-10 13:37:01,093 - INFO - auth_manager - Authenticated mirror_account successfully
+2025-11-10 13:37:01,094 - INFO - controller - Starting monitoring loop...
+2025-11-10 13:37:01,094 - INFO - controller - Monitoring started (mirroring disabled by default)
+2025-11-10 13:37:01,094 - INFO - trade_detector - Checking for new trades...
+2025-11-10 13:37:01,279 - INFO - trade_detector - No new trades found
+2025-11-10 13:37:11,289 - INFO - mirror_engine - MIRRORING ENGINE STOPPED
+2025-11-10 13:37:16,489 - INFO - auth_manager - Logged out source_account
+2025-11-10 13:37:16,660 - INFO - auth_manager - Logged out mirror_account
+2025-11-10 13:37:16,661 - INFO - controller - Monitoring stopped
+2025-11-10 13:43:35,659 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-10 13:49:17,769 - WARNING - controller - Monitoring not running
+2025-11-10 14:09:55,622 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-10 14:10:02,608 - INFO - controller - Authenticating accounts...
+2025-11-10 14:10:08,103 - INFO - auth_manager - Authenticated source_account successfully
+2025-11-10 14:10:08,524 - INFO - auth_manager - Authenticated mirror_account successfully
+2025-11-10 14:10:08,525 - INFO - controller - Starting monitoring loop...
+2025-11-10 14:10:08,525 - INFO - controller - Monitoring started (mirroring disabled by default)
+2025-11-10 14:10:08,525 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:10:08,757 - INFO - trade_detector - No new trades found
+2025-11-10 14:10:18,767 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:10:18,976 - INFO - trade_detector - No new trades found
+2025-11-10 14:10:28,986 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:10:29,177 - INFO - trade_detector - No new trades found
+2025-11-10 14:10:39,187 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:10:39,406 - INFO - trade_detector - No new trades found
+2025-11-10 14:10:49,417 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:10:49,605 - INFO - trade_detector - No new trades found
+2025-11-10 14:10:59,615 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:10:59,802 - INFO - trade_detector - No new trades found
+2025-11-10 14:11:09,813 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:11:10,003 - INFO - trade_detector - No new trades found
+2025-11-10 14:11:20,011 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:11:20,204 - INFO - trade_detector - No new trades found
+2025-11-10 14:11:30,215 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:11:30,459 - INFO - trade_detector - NEW TRADE DETECTED: NIFTY11NOV2526100CE Qty: 75 Price: 1.45
+2025-11-10 14:11:30,460 - INFO - trade_detector - Found 1 new trades
+2025-11-10 14:11:40,470 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:11:40,662 - INFO - trade_detector - No new trades found
+2025-11-10 14:11:47,142 - INFO - safety_manager - Mirroring ENABLED
+2025-11-10 14:11:47,142 - INFO - mirror_engine - MIRRORING ENGINE STARTED
+2025-11-10 14:11:50,672 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:11:50,849 - INFO - trade_detector - No new trades found
+2025-11-10 14:12:00,859 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:12:01,049 - INFO - trade_detector - No new trades found
+2025-11-10 14:12:11,051 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:12:11,245 - INFO - trade_detector - No new trades found
+2025-11-10 14:12:21,256 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:12:21,479 - INFO - trade_detector - No new trades found
+2025-11-10 14:12:31,489 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:12:31,688 - INFO - trade_detector - No new trades found
+2025-11-10 14:12:41,698 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:12:41,892 - INFO - trade_detector - No new trades found
+2025-11-10 14:12:51,899 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:12:52,107 - INFO - trade_detector - No new trades found
+2025-11-10 14:13:02,115 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:13:02,358 - INFO - trade_detector - No new trades found
+2025-11-10 14:13:12,367 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:13:12,558 - INFO - trade_detector - No new trades found
+2025-11-10 14:13:22,568 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:13:22,763 - INFO - trade_detector - No new trades found
+2025-11-10 14:13:32,767 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:13:32,946 - INFO - trade_detector - No new trades found
+2025-11-10 14:13:42,956 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:13:43,146 - INFO - trade_detector - No new trades found
+2025-11-10 14:13:53,157 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:13:53,393 - INFO - trade_detector - No new trades found
+2025-11-10 14:14:03,403 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:14:03,606 - INFO - trade_detector - No new trades found
+2025-11-10 14:14:13,616 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:14:13,817 - INFO - trade_detector - NEW TRADE DETECTED: NIFTY11NOV2526100CE Qty: 75 Price: 1.4
+2025-11-10 14:14:13,817 - INFO - trade_detector - Found 1 new trades
+2025-11-10 14:14:13,817 - INFO - controller - LOT CONVERSION: Converted 75 -> 75 (1 lots of 75) for NIFTY11NOV2526100CE
+2025-11-10 14:14:13,818 - INFO - controller - READY TO MIRROR: NIFTY11NOV2526100CE | Qty: 75→75 (1 lots) | Price: 1.4
+2025-11-10 14:14:13,818 - INFO - mirror_engine - ATTEMPTING TO MIRROR: NIFTY11NOV2526100CE Qty: 75 @ 1.4
+2025-11-10 14:14:13,818 - WARNING - mirror_engine - Search API error (attempt 1): 'SmartConnect' object has no attribute 'searchscrip'
+2025-11-10 14:14:15,820 - WARNING - mirror_engine - Search API error (attempt 2): 'SmartConnect' object has no attribute 'searchscrip'
+2025-11-10 14:14:17,822 - WARNING - mirror_engine - Search API error (attempt 3): 'SmartConnect' object has no attribute 'searchscrip'
+2025-11-10 14:14:17,822 - ERROR - mirror_engine - All search attempts failed for NIFTY11NOV2526100CE
+2025-11-10 14:14:17,823 - ERROR - mirror_engine - Could not get token for NIFTY11NOV2526100CE
+2025-11-10 14:14:17,823 - INFO - mirror_engine - Mirror attempt 1/3
+2025-11-10 14:14:17,823 - WARNING - mirror_engine - Search API error (attempt 1): 'SmartConnect' object has no attribute 'searchscrip'
+2025-11-10 14:14:19,825 - WARNING - mirror_engine - Search API error (attempt 2): 'SmartConnect' object has no attribute 'searchscrip'
+2025-11-10 14:14:21,827 - WARNING - mirror_engine - Search API error (attempt 3): 'SmartConnect' object has no attribute 'searchscrip'
+2025-11-10 14:14:21,828 - ERROR - mirror_engine - All search attempts failed for NIFTY11NOV2526100CE
+2025-11-10 14:14:21,828 - WARNING - mirror_engine - Could not get token for NIFTY11NOV2526100CE, proceeding without symboltoken
+2025-11-10 14:14:21,828 - WARNING - mirror_engine - Search API error (attempt 1): 'SmartConnect' object has no attribute 'searchscrip'
+2025-11-10 14:14:23,830 - WARNING - mirror_engine - Search API error (attempt 2): 'SmartConnect' object has no attribute 'searchscrip'
+2025-11-10 14:14:25,833 - WARNING - mirror_engine - Search API error (attempt 3): 'SmartConnect' object has no attribute 'searchscrip'
+2025-11-10 14:14:25,834 - ERROR - mirror_engine - All search attempts failed for NIFTY11NOV2526100CE
+2025-11-10 14:14:25,834 - ERROR - mirror_engine - Could not get token for NIFTY11NOV2526100CE
+2025-11-10 14:14:25,834 - INFO - mirror_engine - Placing order: SELL NIFTY11NOV2526100CE x75 (INTRADAY)
+2025-11-10 14:14:26,005 - ERROR - mirror_engine - Order placement error: 'NoneType' object has no attribute 'get'
+2025-11-10 14:14:26,005 - WARNING - mirror_engine - Mirror attempt 1 failed: 'NoneType' object has no attribute 'get'
+2025-11-10 14:14:28,007 - INFO - mirror_engine - Mirror attempt 2/3
+2025-11-10 14:14:28,008 - WARNING - mirror_engine - Search API error (attempt 1): 'SmartConnect' object has no attribute 'searchscrip'
+2025-11-10 14:14:30,010 - WARNING - mirror_engine - Search API error (attempt 2): 'SmartConnect' object has no attribute 'searchscrip'
+2025-11-10 14:14:32,013 - WARNING - mirror_engine - Search API error (attempt 3): 'SmartConnect' object has no attribute 'searchscrip'
+2025-11-10 14:14:32,014 - ERROR - mirror_engine - All search attempts failed for NIFTY11NOV2526100CE
+2025-11-10 14:14:32,014 - WARNING - mirror_engine - Could not get token for NIFTY11NOV2526100CE, proceeding without symboltoken
+2025-11-10 14:14:32,014 - WARNING - mirror_engine - Search API error (attempt 1): 'SmartConnect' object has no attribute 'searchscrip'
+2025-11-10 14:14:34,015 - WARNING - mirror_engine - Search API error (attempt 2): 'SmartConnect' object has no attribute 'searchscrip'
+2025-11-10 14:14:36,017 - WARNING - mirror_engine - Search API error (attempt 3): 'SmartConnect' object has no attribute 'searchscrip'
+2025-11-10 14:14:36,018 - ERROR - mirror_engine - All search attempts failed for NIFTY11NOV2526100CE
+2025-11-10 14:14:36,018 - ERROR - mirror_engine - Could not get token for NIFTY11NOV2526100CE
+2025-11-10 14:14:36,018 - INFO - mirror_engine - Placing order: SELL NIFTY11NOV2526100CE x75 (INTRADAY)
+2025-11-10 14:14:36,177 - ERROR - mirror_engine - Order placement error: 'NoneType' object has no attribute 'get'
+2025-11-10 14:14:36,177 - WARNING - mirror_engine - Mirror attempt 2 failed: 'NoneType' object has no attribute 'get'
+2025-11-10 14:14:38,179 - INFO - mirror_engine - Mirror attempt 3/3
+2025-11-10 14:14:38,180 - WARNING - mirror_engine - Search API error (attempt 1): 'SmartConnect' object has no attribute 'searchscrip'
+2025-11-10 14:14:40,182 - WARNING - mirror_engine - Search API error (attempt 2): 'SmartConnect' object has no attribute 'searchscrip'
+2025-11-10 14:14:42,184 - WARNING - mirror_engine - Search API error (attempt 3): 'SmartConnect' object has no attribute 'searchscrip'
+2025-11-10 14:14:42,185 - ERROR - mirror_engine - All search attempts failed for NIFTY11NOV2526100CE
+2025-11-10 14:14:42,185 - WARNING - mirror_engine - Could not get token for NIFTY11NOV2526100CE, proceeding without symboltoken
+2025-11-10 14:14:42,186 - WARNING - mirror_engine - Search API error (attempt 1): 'SmartConnect' object has no attribute 'searchscrip'
+2025-11-10 14:14:44,188 - WARNING - mirror_engine - Search API error (attempt 2): 'SmartConnect' object has no attribute 'searchscrip'
+2025-11-10 14:14:46,190 - WARNING - mirror_engine - Search API error (attempt 3): 'SmartConnect' object has no attribute 'searchscrip'
+2025-11-10 14:14:46,191 - ERROR - mirror_engine - All search attempts failed for NIFTY11NOV2526100CE
+2025-11-10 14:14:46,191 - ERROR - mirror_engine - Could not get token for NIFTY11NOV2526100CE
+2025-11-10 14:14:46,191 - INFO - mirror_engine - Placing order: SELL NIFTY11NOV2526100CE x75 (INTRADAY)
+2025-11-10 14:14:51,363 - INFO - mirror_engine - MIRRORING ENGINE STOPPED
+2025-11-10 14:14:51,378 - ERROR - mirror_engine - Order placement error: 'NoneType' object has no attribute 'get'
+2025-11-10 14:14:51,379 - WARNING - mirror_engine - Mirror attempt 3 failed: 'NoneType' object has no attribute 'get'
+2025-11-10 14:14:51,379 - ERROR - mirror_engine - FAILED TO MIRROR after 3 attempts: NIFTY11NOV2526100CE
+2025-11-10 14:14:51,379 - ERROR - health_monitor - Trade failed: None
+2025-11-10 14:14:51,379 - ERROR - controller - ❌ FAILED TO MIRROR: NIFTY11NOV2526100CE - 1 lots (75)
+2025-11-10 14:14:51,536 - INFO - auth_manager - Logged out source_account
+2025-11-10 14:14:51,752 - INFO - auth_manager - Logged out mirror_account
+2025-11-10 14:14:51,754 - INFO - controller - Monitoring stopped
+2025-11-10 14:24:28,291 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-10 14:26:16,070 - WARNING - controller - Monitoring not running
+2025-11-10 14:26:28,385 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-10 14:27:02,425 - WARNING - controller - Monitoring not running
+2025-11-10 14:27:07,729 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-10 14:27:09,951 - INFO - controller - Authenticating accounts...
+2025-11-10 14:27:10,392 - INFO - auth_manager - Authenticated source_account successfully
+2025-11-10 14:27:10,836 - INFO - auth_manager - Authenticated mirror_account successfully
+2025-11-10 14:27:10,836 - INFO - controller - Starting monitoring loop...
+2025-11-10 14:27:10,836 - INFO - controller - Monitoring started (mirroring disabled by default)
+2025-11-10 14:27:10,837 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:27:11,048 - INFO - trade_detector - No new trades found
+2025-11-10 14:27:21,059 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:27:21,256 - INFO - trade_detector - No new trades found
+2025-11-10 14:27:31,267 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:27:31,451 - INFO - trade_detector - No new trades found
+2025-11-10 14:27:41,461 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:27:41,649 - INFO - trade_detector - No new trades found
+2025-11-10 14:27:51,660 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:27:51,844 - INFO - trade_detector - No new trades found
+2025-11-10 14:28:01,851 - INFO - mirror_engine - MIRRORING ENGINE STOPPED
+2025-11-10 14:28:06,855 - WARNING - controller - Monitoring not running
+2025-11-10 14:28:46,766 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-10 14:28:55,423 - INFO - controller - Authenticating accounts...
+2025-11-10 14:28:55,869 - INFO - auth_manager - Authenticated source_account successfully
+2025-11-10 14:28:56,294 - INFO - auth_manager - Authenticated mirror_account successfully
+2025-11-10 14:28:56,295 - INFO - controller - Starting monitoring loop...
+2025-11-10 14:28:56,295 - INFO - controller - Monitoring started (mirroring disabled by default)
+2025-11-10 14:28:56,295 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:29:01,499 - INFO - trade_detector - No new trades found
+2025-11-10 14:29:11,509 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:29:11,700 - INFO - trade_detector - No new trades found
+2025-11-10 14:29:21,711 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:29:21,920 - INFO - trade_detector - No new trades found
+2025-11-10 14:29:24,923 - INFO - safety_manager - Mirroring ENABLED
+2025-11-10 14:29:24,923 - INFO - mirror_engine - MIRRORING ENGINE STARTED
+2025-11-10 14:29:31,931 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:29:32,128 - INFO - trade_detector - No new trades found
+2025-11-10 14:29:42,139 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:29:42,333 - INFO - trade_detector - No new trades found
+2025-11-10 14:29:52,343 - INFO - trade_detector - Checking for new trades...
+2025-11-10 14:29:52,578 - INFO - trade_detector - No new trades found
+2025-11-10 14:30:02,587 - INFO - mirror_engine - MIRRORING ENGINE STOPPED
+2025-11-10 14:30:02,798 - INFO - auth_manager - Logged out source_account
+2025-11-10 14:30:03,034 - INFO - auth_manager - Logged out mirror_account
+2025-11-10 14:30:03,035 - INFO - controller - Monitoring stopped
+2025-11-10 14:30:33,498 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-10 14:31:47,841 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-10 14:31:48,289 - INFO - auth_manager - Authenticated source_account successfully
+2025-11-10 14:31:48,746 - INFO - auth_manager - Authenticated mirror_account successfully
+2025-11-10 14:33:49,350 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-10 14:33:49,789 - INFO - auth_manager - Authenticated source_account successfully
+2025-11-10 14:33:50,280 - INFO - auth_manager - Authenticated mirror_account successfully
+2025-11-10 14:51:48,671 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-10 14:52:12,662 - WARNING - controller - Monitoring not running

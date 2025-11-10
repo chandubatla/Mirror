@@ -12,6 +12,62 @@ from src.mirror.mirror_engine import MirrorEngine
 from src.health.health_monitor import HealthMonitor
 
 class MirroringController:
+    def debug_symbol_search(self, symbol):
+        """Debug method to check symbol search results"""
+        print(f"\n🔍 DEBUG SYMBOL SEARCH: {symbol}")
+        print("=" * 50)
+        
+        if not hasattr(self, 'mirror_engine') or not self.mirror_engine:
+            print("❌ Mirror engine not initialized")
+            return
+        
+        connection = self.auth.get_connection('mirror_account')
+        if not connection:
+            print("❌ No connection available")
+            return
+        
+        try:
+            search_response = connection.search_scrip(
+                exchange='NFO',
+                searchscrip=symbol
+            )
+            
+            if search_response and search_response.get('status'):
+                symbols_found = [item.get('symbol', '') for item in search_response.get('data', [])]
+                print(f"✅ Found {len(symbols_found)} symbols:")
+                for s in symbols_found[:10]:  # Show first 10
+                    print(f"   - {s}")
+                
+                # Check if our symbol exists
+                if symbol in symbols_found:
+                    print(f"🎯 EXACT MATCH FOUND: {symbol}")
+                else:
+                    print(f"❌ Exact match NOT found for: {symbol}")
+                    
+                # Also try with just the base symbol
+                if 'BANKNIFTY' in symbol:
+                    base_symbol = 'BANKNIFTY'
+                elif 'NIFTY' in symbol:
+                    base_symbol = 'NIFTY'
+                else:
+                    base_symbol = symbol.split('2')[0] if '2' in symbol else symbol
+                    
+                print(f"\n🔍 Trying base symbol search: {base_symbol}")
+                base_search = connection.search_scrip(exchange='NFO', searchscrip=base_symbol)
+                if base_search and base_search.get('status'):
+                    base_symbols = [item.get('symbol', '') for item in base_search.get('data', [])]
+                    print(f"✅ Found {len(base_symbols)} symbols with base '{base_symbol}':")
+                    for s in base_symbols[:10]:
+                        if symbol in s:  # Show symbols containing our target
+                            print(f"   - {s}")
+            else:
+                print(f"❌ Search failed: {search_response.get('message', 'Unknown error')}")
+                
+        except Exception as e:
+            print(f"❌ Search error: {e}")
+            import traceback
+            print(f"Full error: {traceback.format_exc()}")
+
     def __init__(self):
         # Setup logging
         logging.basicConfig(
@@ -28,26 +84,63 @@ class MirroringController:
         )
         self.logger = logging.getLogger('controller')
         
-        # Initialize modules
+        # Initialize configuration first
         self.config = ConfigManager()
-        self.auth = AuthManager(self.config)
-        self.detector = TradeDetector(self.config, self.auth)
-        self.safety = SafetyManager(self.config)
-        self.mirror_engine = MirrorEngine(self.config, self.auth, self.safety)
-        self.health_monitor = HealthMonitor()
         
-        # Initialize lot size configuration
-        self.LOT_SIZES = ConfigManager.get('LOT_SIZES', {})
-        self.DEFAULT_LOT_SIZE = 75  # Fallback default
+        # ✅ FIXED: Access LOT_SIZES from accounts configuration
+        accounts_config = self.config.get_all_accounts()
+        self.LOT_SIZES = accounts_config.get('LOT_SIZE', {})
+        self.DEFAULT_LOT_SIZE = 75
+        
+        # ✅ FIXED: Temporarily disable max_trade_qty for testing
+        self.max_trade_qty = None
+        
+        # Initialize modules with proper error handling
+        try:
+            self.auth = AuthManager(self.config)
+            self.detector = TradeDetector(self.config, self.auth)
+            self.safety = SafetyManager(self.config)
+            self.mirror_engine = MirrorEngine(self.config, self.auth, self.safety)
+            self.health_monitor = HealthMonitor()
+        except Exception as e:
+            self.logger.error(f"Failed to initialize modules: {e}")
+            # Set modules to None to avoid attribute errors
+            self.auth = None
+            self.detector = None
+            self.safety = None
+            self.mirror_engine = None
+            self.health_monitor = None
         
         # Safety defaults
         settings = self.config.get_settings()
-        self.dry_run = settings.get('dry_run', True)               # NEW: default to safe dry-run
-        self.max_trade_qty = settings.get('max_trade_qty', None)  # NEW: optional per-trade cap
+        self.dry_run = settings.get('dry_run', True)
         
         self.running = False
         self.monitoring_thread = None
         
+        self.logger.info(f"Loaded LOT_SIZES: {self.LOT_SIZES}")
+    def quick_test(self):
+        """Quick test without max_trade_qty limit"""
+        print("\n🔧 QUICK TEST (max_trade_qty disabled)")
+        print("="*40)
+        
+        # Temporarily disable max limit
+        original_max = self.max_trade_qty
+        self.max_trade_qty = None
+        
+        test_trades = [
+            {'symbol': 'NIFTY25NOV2525350PE', 'quantity': '75'},
+            {'symbol': 'BANKNIFTY25NOV2550000CE', 'quantity': '35'},
+        ]
+        
+        for trade in test_trades:
+            success, mirrored_qty, lots, lot_size, message = self._convert_to_lot_based_quantity(trade)
+            status = "✅ PASS" if success else "❌ FAIL"
+            print(f"{status} | {trade['symbol']} Qty: {trade['quantity']}")
+            print(f"     → {message}")
+        
+        # Restore original value
+        self.max_trade_qty = original_max
     def _get_instrument_lot_size(self, trading_symbol):
         """
         Extract base instrument and return lot size from config
@@ -71,6 +164,27 @@ class MirroringController:
             return self.LOT_SIZES.get('BANKEX', self.DEFAULT_LOT_SIZE)
         else:
             return self.DEFAULT_LOT_SIZE
+
+    def _identify_instrument(self, symbol):
+        """Identify the instrument type from symbol"""
+        if not symbol:
+            return 'UNKNOWN'
+            
+        symbol_upper = symbol.upper()
+        if 'BANKNIFTY' in symbol_upper:
+            return 'BANKNIFTY'
+        elif 'FINNIFTY' in symbol_upper:
+            return 'FINNIFTY' 
+        elif 'MIDCPNIFTY' in symbol_upper:
+            return 'MIDCPNIFTY'
+        elif 'SENSEX' in symbol_upper:
+            return 'SENSEX'
+        elif 'BANKEX' in symbol_upper:
+            return 'BANKEX'
+        elif 'NIFTY' in symbol_upper:
+            return 'NIFTY'
+        else:
+            return 'UNKNOWN/DEFAULT'
 
     def _convert_to_lot_based_quantity(self, trade):
         """
@@ -117,10 +231,61 @@ class MirroringController:
         except Exception as e:
             return False, 0, 0, 0, f"Error converting to lot quantity: {e}"
 
+    def test_symbol_parsing(self):
+        """Test symbol parsing and lot size detection"""
+        print("\n" + "="*50)
+        print("SYMBOL PARSING TEST")
+        print("="*50)
+        
+        test_symbols = [
+            "NIFTY25NOV2525350PE",      # From your logs
+            "BANKNIFTY25NOV2550000CE",
+            "NIFTY25NOV2550000PE",
+            "FINNIFTY25NOV2550000CE",
+            "RELIANCE",                 # Equity (should use default)
+            "INVALID_SYMBOL"            # Should use default
+        ]
+        
+        for symbol in test_symbols:
+            lot_size = self._get_instrument_lot_size(symbol)
+            instrument_type = self._identify_instrument(symbol)
+            print(f"Symbol: {symbol}")
+            print(f"  → Lot Size: {lot_size}")
+            print(f"  → Instrument: {instrument_type}")
+            print()
+
+    def test_lot_conversion(self):
+        """Test quantity to lot conversion"""
+        print("\n" + "="*50)
+        print("LOT CONVERSION TEST")
+        print("="*50)
+        
+        test_cases = [
+            {'symbol': 'NIFTY25NOV2525350PE', 'quantity': '75'},     # 1 lot
+            {'symbol': 'NIFTY25NOV2525350PE', 'quantity': '150'},    # 2 lots
+            {'symbol': 'NIFTY25NOV2525350PE', 'quantity': '50'},     # <1 lot (should ignore)
+            {'symbol': 'BANKNIFTY25NOV2550000CE', 'quantity': '35'}, # 1 lot
+            {'symbol': 'BANKNIFTY25NOV2550000CE', 'quantity': '105'}, # 3 lots
+            {'symbol': 'BANKNIFTY25NOV2550000CE', 'quantity': '30'}, # <1 lot (should ignore)
+        ]
+        
+        for trade in test_cases:
+            success, mirrored_qty, lots, lot_size, message = self._convert_to_lot_based_quantity(trade)
+            status = "✅ PASS" if success else "❌ FAIL"
+            print(f"{status} | {trade['symbol']} Qty: {trade['quantity']}")
+            print(f"     → Mirrored: {mirrored_qty} ({lots} lots of {lot_size})")
+            print(f"     → Message: {message}")
+            print()
+
     def start_monitoring(self):
         """Start the monitoring loop"""
         if self.running:
             self.logger.warning("Monitoring already running")
+            return False
+        
+        # ✅ ADDED: Check if modules are properly initialized
+        if not self.auth:
+            self.logger.error("Authentication module not initialized. Cannot start monitoring.")
             return False
         
         # Authenticate accounts (with retry)
@@ -140,13 +305,38 @@ class MirroringController:
         # Start monitoring thread
         self.running = True
         self.monitoring_thread = threading.Thread(target=self._monitoring_loop)
-        # keep non-daemon so join() waits for loop to stop cleanly
         self.monitoring_thread.daemon = False
         self.monitoring_thread.start()
         
         self.logger.info("Monitoring started (mirroring disabled by default)")
         return True
     
+    def check_module_status(self):
+        """Check if all modules are properly initialized"""
+        print("\n🔍 MODULE STATUS CHECK")
+        print("=" * 30)
+        
+        modules = {
+            'config': self.config,
+            'auth': self.auth,
+            'detector': self.detector,
+            'safety': self.safety,
+            'mirror_engine': self.mirror_engine,
+            'health_monitor': self.health_monitor
+        }
+        
+        for name, module in modules.items():
+            status = "✅ INITIALIZED" if module is not None else "❌ NOT INITIALIZED"
+            print(f"{name:15} : {status}")
+        
+        # Check if we can get accounts from config
+        if self.config:
+            try:
+                accounts = self.config.get_all_accounts()
+                print(f"Accounts loaded   : ✅ {list(accounts.keys())}")
+            except Exception as e:
+                print(f"Accounts loaded   : ❌ Error: {e}")
+
     def stop_monitoring(self):
         """Stop the monitoring loop"""
         if not self.running:
@@ -326,6 +516,12 @@ def main():
     """Main function with interactive controls"""
     controller = MirroringController()
     
+    # 🧪 RUN TESTS FIRST
+    print("🚀 RUNNING PRE-FLIGHT CHECKS...")
+    controller.test_symbol_parsing()
+    controller.test_lot_conversion()
+    print("🎯 PRE-FLIGHT CHECKS COMPLETE!")
+    
     # handle signals for graceful shutdown
     import signal
     def _handle_signal(signum, frame):
@@ -335,7 +531,7 @@ def main():
     signal.signal(signal.SIGINT, _handle_signal)
     signal.signal(signal.SIGTERM, _handle_signal)
     
-    print("Angel One Mirroring System")
+    print("\nAngel One Mirroring System")
     print("="*40)
     print("Commands: start, stop, enable, disable, emergency, status, exit")
     print("="*40)

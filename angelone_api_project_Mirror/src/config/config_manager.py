@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 class ConfigManager:
     def __init__(self):
         load_dotenv(dotenv_path="/root/config.env")
-        load_dotenv(dotenv_path="../.env")
         self.accounts = self.load_accounts()
         self.settings = self.load_settings()
     
@@ -43,8 +42,8 @@ class ConfigManager:
     def load_settings(self):
         """Load settings with defaults"""
         settings = {
-            'dry_run': True,  # Safe default
-            'max_trade_qty': 50,
+            'dry_run': False,  # Safe default
+            'max_trade_qty': 300,
             'price_tolerance': 0.01,
             'max_retries': 3,
             'retry_delay': 2,
