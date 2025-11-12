@@ -300,3 +300,27 @@ TypeError: '>' not supported between instances of 'str' and 'int'
 2025-11-10 14:33:50,280 - INFO - auth_manager - Authenticated mirror_account successfully
 2025-11-10 14:51:48,671 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
 2025-11-10 14:52:12,662 - WARNING - controller - Monitoring not running
+2025-11-10 18:49:37,384 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-10 18:51:39,431 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-10 19:08:25,339 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-10 19:09:02,428 - WARNING - controller - Monitoring not running
+2025-11-10 19:35:28,493 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-10 19:35:38,481 - INFO - controller - Authenticating accounts...
+2025-11-10 19:35:38,969 - INFO - auth_manager - Authenticated source_account successfully
+2025-11-10 19:35:39,421 - INFO - auth_manager - Authenticated mirror_account successfully
+2025-11-10 19:35:39,421 - INFO - controller - Starting monitoring loop...
+2025-11-10 19:35:39,421 - INFO - controller - Monitoring started (mirroring disabled by default)
+2025-11-10 19:35:39,422 - INFO - trade_detector - Checking for new trades...
+2025-11-10 19:35:39,625 - INFO - trade_detector - No new trades found
+2025-11-10 19:35:49,635 - INFO - trade_detector - Checking for new trades...
+2025-11-10 19:35:49,842 - INFO - trade_detector - No new trades found
+2025-11-10 19:35:59,853 - INFO - trade_detector - Checking for new trades...
+2025-11-10 19:36:00,090 - INFO - trade_detector - No new trades found
+2025-11-10 19:36:10,100 - INFO - trade_detector - Checking for new trades...
+2025-11-10 19:36:10,302 - INFO - trade_detector - No new trades found
+2025-11-10 19:36:20,313 - INFO - trade_detector - Checking for new trades...
+2025-11-10 19:36:20,539 - INFO - trade_detector - No new trades found
+2025-11-10 19:36:27,798 - INFO - mirror_engine - MIRRORING ENGINE STOPPED
+2025-11-10 19:36:27,995 - INFO - auth_manager - Logged out source_account
+2025-11-10 19:36:28,188 - INFO - auth_manager - Logged out mirror_account
+2025-11-10 19:36:28,189 - INFO - controller - Monitoring stopped

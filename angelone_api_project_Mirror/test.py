@@ -1,124 +1,128 @@
-#!/usr/bin/env python3
-import os
-import time
-from dotenv import load_dotenv
-from SmartApi import SmartConnect
+import inspect
+import traceback
 
-# Load environment
-load_dotenv("/root/config.env")
+def search_scrip_debug(obj, search_terms=("NIFTY 50", "NIFTY")):
+    """
+    Robust caller for obj.searchScrip(...) which tries several calling conventions
+    and inspects the function signature to use the correct parameter name.
+    Returns the first matching scrip dict or None.
+    """
+    # Debug: show what attributes are available on the object
+    print("Available SmartConnect methods (partial):")
+    for name in ("searchScrip", "search_scrip", "searchScrips", "getInstrument", "get_instrument", "get_instruments"):
+        if hasattr(obj, name):
+            print(" -", name)
 
-def test_source_account():
-    print("🔧 TESTING SOURCE ACCOUNT - REFRESH TOKEN")
-    print("=" * 50)
-    
-    # Source account credentials
-    api_key = os.getenv("SOURCE_API_KEY")
-    client_id = os.getenv("SOURCE_CLIENT_ID") 
-    mpin = os.getenv("SOURCE_MPIN")
-    
-    print(f"API Key: {api_key[:10]}...")
-    print(f"Client ID: {client_id}")
-    
+    # Get the actual attribute
+    if not hasattr(obj, "searchScrip"):
+        print("⚠️ Object has no attribute 'searchScrip'. Listing all methods for debugging:")
+        print([n for n in dir(obj) if callable(getattr(obj, n)) and not n.startswith("_")][:50])
+        return None
+
+    func = getattr(obj, "searchScrip")
+    print(f"\nsearchScrip object: {func}")
     try:
-        # Create connection
-        connection = SmartConnect(api_key=api_key)
-        print("✅ SmartConnect created")
-        
-        # Login with refresh token (if available)
-        print("🔄 Checking for existing session...")
-        
-        # Try to get profile without login first
-        try:
-            profile = connection.getProfile()
-            if profile.get('status'):
-                print("✅ Already logged in!")
-            else:
-                print("❌ Not logged in, need fresh login")
-                return
-        except:
-            print("❌ No active session, need fresh login")
-            return
-        
-        # Test 1: Search for symbols
-        print("\n🔍 TEST 1: Searching for NIFTY symbols...")
-        result = connection.searchscrip("NFO", "NIFTY")
-        
-        if result.get('status'):
-            symbols = result.get('data', [])
-            print(f"✅ Found {len(symbols)} NIFTY symbols")
-            
-            # Show first 10 symbols
-            print("\n📋 First 10 symbols:")
-            for i, symbol in enumerate(symbols[:10]):
-                symbol_name = symbol.get('symbol', 'N/A')
-                token = symbol.get('token', 'N/A')
-                print(f"  {i+1}. {symbol_name} -> Token: {token}")
-        else:
-            print(f"❌ Search failed: {result.get('message')}")
-        
-        # Test 2: Get NIFTY spot price
-        print("\n💰 TEST 2: Getting NIFTY spot price...")
-        nifty_spot = connection.searchscrip("NSE", "NIFTY 50")
-        if nifty_spot.get('status') and nifty_spot.get('data'):
-            nifty_token = nifty_spot['data'][0].get('token')
-            nifty_symbol = nifty_spot['data'][0].get('symbol')
-            
-            ltp_data = connection.ltpData("NSE", nifty_symbol, nifty_token)
-            if ltp_data.get('status'):
-                spot_price = ltp_data['data']['ltp']
-                print(f"✅ NIFTY Spot: ₹{spot_price}")
-            else:
-                print(f"❌ LTP failed: {ltp_data.get('message')}")
-        
-        # Test 3: Check specific option symbol
-        print("\n🎯 TEST 3: Checking specific option...")
-        test_symbols = [
-            "NIFTY11NOV26100CE",
-            "NIFTY26100CE", 
-            "NIFTY11NOV26100CE.NFO"
-        ]
-        
-        for symbol in test_symbols:
-            print(f"  Searching: {symbol}")
-            search_result = connection.searchscrip("NFO", symbol)
-            if search_result.get('status') and search_result.get('data'):
-                for item in search_result['data']:
-                    if symbol in item.get('symbol', ''):
-                        print(f"  ✅ FOUND: {item.get('symbol')} -> Token: {item.get('token')}")
-                        break
-                else:
-                    print(f"  ❌ Not found in results")
-            else:
-                print(f"  ❌ Search failed")
-        
-        # Test 4: Get order book
-        print("\n📊 TEST 4: Checking order book...")
-        order_book = connection.orderBook()
-        if order_book.get('status'):
-            orders = order_book.get('data', [])
-            print(f"✅ Found {len(orders)} orders in book")
-            for order in orders[:3]:  # Show first 3 orders
-                print(f"  - {order.get('tradingsymbol')} | {order.get('transactiontype')} | Qty: {order.get('quantity')}")
-        else:
-            print(f"❌ Order book failed: {order_book.get('message')}")
-            
-        # Test 5: Get positions
-        print("\n📈 TEST 5: Checking positions...")
-        positions = connection.position()
-        if positions.get('status'):
-            pos_data = positions.get('data', [])
-            print(f"✅ Found {len(pos_data)} positions")
-            for pos in pos_data[:3]:  # Show first 3 positions
-                print(f"  - {pos.get('tradingsymbol')} | Net: {pos.get('netqty')} | P&L: {pos.get('pnl')}")
-        else:
-            print(f"❌ Positions failed: {positions.get('message')}")
-            
-        print("\n🎯 SOURCE ACCOUNT TEST COMPLETED!")
-        
+        sig = inspect.signature(func)
+        print("Detected signature:", sig)
     except Exception as e:
-        print(f"❌ Error: {e}")
-        import traceback
-        print(f"Full error: {traceback.format_exc()}")
+        print("Could not get signature via inspect:", e)
+        sig = None
 
-if __name__ == "__main__":
-    test_source_account()
+    tried_calls = []
+
+    # helper to attempt a call and capture results / exceptions
+    def _try_call(callable_fn, *args, **kwargs):
+        try:
+            print(f"\nAttempting call: {callable_fn.__name__}(*{args}, **{kwargs})")
+            res = callable_fn(*args, **kwargs)
+            print("Call succeeded. Returned type:", type(res))
+            return res
+        except TypeError as te:
+            print("TypeError:", te)
+            tried_calls.append(("TypeError", args, kwargs, str(te)))
+        except Exception as e:
+            print("Exception:", e)
+            traceback.print_exc()
+            tried_calls.append(("Exception", args, kwargs, str(e)))
+        return None
+
+    # Try multiple ways to call based on typical SmartAPI wrappers
+    likely_param_names = []
+    if sig:
+        # collect non-self parameters from signature
+        for i, (pname, p) in enumerate(sig.parameters.items()):
+            # skip 'self' or 'cls' if present
+            if pname in ("self", "cls"):
+                continue
+            likely_param_names.append(pname)
+
+    # Common names that wrappers sometimes use
+    common_names = ["searchscrip", "searchScrip", "scrip", "keyword", "query", "symbol", "search_string"]
+
+    # Merge lists while keeping unique order
+    for name in common_names:
+        if name not in likely_param_names:
+            likely_param_names.append(name)
+
+    # 1) Try positional call with single term
+    for term in search_terms:
+        print("\n--- trying search term:", term)
+        res = _try_call(func, term)
+        if res:
+            return normalize_search_result(res)
+
+        # 2) Try calling as keyword with detected param names
+        for pname in likely_param_names:
+            kwargs = {pname: term}
+            res = _try_call(func, **kwargs)
+            if res:
+                return normalize_search_result(res)
+
+        # 3) Try uppercase/lowercase variations
+        res = _try_call(func, term.upper())
+        if res:
+            return normalize_search_result(res)
+        res = _try_call(func, term.lower())
+        if res:
+            return normalize_search_result(res)
+
+    # If we reach here no call returned results
+    print("\nAll attempted calls failed. Summary of attempts:")
+    for t in tried_calls:
+        print(t)
+    return None
+
+def normalize_search_result(res):
+    """
+    Normalize typical SmartAPI search result forms to a list of dicts.
+    """
+    # If the result is a dict with keys like 'data' or 'result', drill in
+    if isinstance(res, dict):
+        # many SmartAPI responses wrap data in res['data'] or res.get('data', res.get('result'))
+        for key in ("data", "result", "response"):
+            if key in res and isinstance(res[key], (list, dict)):
+                res = res[key]
+                break
+
+    # If it's a list, return first matching or the list
+    if isinstance(res, list):
+        if not res:
+            return None
+        # Try to find an item with 'NIFTY' in symbol/tradingSymbol/name
+        for item in res:
+            if not isinstance(item, dict):
+                continue
+            sym = (item.get("symbol") or item.get("tradingSymbol") or item.get("name") or "").upper()
+            exch = (item.get("exchange") or "").upper()
+            if "NIFTY" in sym and exch in ("NSE", "NFO", ""):
+                print("Found candidate in results:", sym, item.get("token"))
+                return item
+        # fallback: return first item
+        print("No exact NIFTY in list; returning first item.")
+        return res[0]
+    elif isinstance(res, dict):
+        # single dict returned
+        return res
+    else:
+        print("Returned unexpected type:", type(res))
+        return None

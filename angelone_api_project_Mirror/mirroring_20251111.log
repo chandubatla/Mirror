@@ -1,0 +1,2 @@
+2025-11-11 09:50:28,516 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-11 09:58:23,520 - WARNING - controller - Monitoring not running

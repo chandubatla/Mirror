@@ -1,0 +1,18 @@
+2025-11-12 13:28:25,789 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-12 13:28:41,736 - INFO - controller - Authenticating accounts...
+2025-11-12 13:28:42,148 - INFO - auth_manager - Authenticated source_account successfully
+2025-11-12 13:28:45,077 - INFO - auth_manager - Authenticated mirror_account successfully
+2025-11-12 13:28:45,078 - INFO - controller - Starting monitoring loop...
+2025-11-12 13:28:45,078 - INFO - controller - Monitoring started (mirroring disabled by default)
+2025-11-12 13:28:45,078 - INFO - trade_detector - Checking for new trades...
+2025-11-12 13:28:45,305 - INFO - trade_detector - No trades in trade book (data is None)
+2025-11-12 13:28:55,315 - INFO - trade_detector - Checking for new trades...
+2025-11-12 13:28:55,528 - INFO - trade_detector - No trades in trade book (data is None)
+2025-11-12 13:29:05,535 - INFO - trade_detector - Checking for new trades...
+2025-11-12 13:29:05,763 - INFO - trade_detector - No trades in trade book (data is None)
+2025-11-12 13:29:15,258 - INFO - mirror_engine - MIRRORING ENGINE STOPPED
+2025-11-12 13:29:15,463 - INFO - auth_manager - Logged out source_account
+2025-11-12 13:29:15,664 - INFO - auth_manager - Logged out mirror_account
+2025-11-12 13:29:15,664 - INFO - controller - Monitoring stopped
+2025-11-12 13:32:10,120 - INFO - controller - Loaded LOT_SIZES: {'NIFTY': 75, 'BANKNIFTY': 35, 'FINNIFTY': 40, 'MIDCPNIFTY': 75, 'SENSEX': 15, 'BANKEX': 15}
+2025-11-12 13:32:29,844 - WARNING - controller - Monitoring not running
